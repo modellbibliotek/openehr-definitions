@@ -1,0 +1,3528 @@
+{
+  "templateId" : "breast_pathology_result_report_inlined.v1",
+  "semVer" : "1.1.1",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "en" ],
+  "tree" : {
+    "id" : "breast_pathology_result_report_inlined.v1",
+    "name" : "breast_pathology_result_report_inlined.v1",
+    "localizedName" : "breast_pathology_result_report_inlined.v1",
+    "rmType" : "COMPOSITION",
+    "nodeId" : "openEHR-EHR-COMPOSITION.report.v1",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "en" : "breast_pathology_result_report_inlined.v1"
+    },
+    "localizedDescriptions" : {
+      "en" : "Document to communicate information to others, commonly in response to a request from another party."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "context",
+      "rmType" : "EVENT_CONTEXT",
+      "nodeId" : "",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/context",
+      "children" : [ {
+        "id" : "report_id",
+        "name" : "Report ID",
+        "localizedName" : "Report ID",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0002",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Report ID"
+        },
+        "localizedDescriptions" : {
+          "en" : "Identification information about the report."
+        },
+        "aqlPath" : "/context/other_context[at0001]/items[at0002]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "status",
+        "name" : "Status",
+        "localizedName" : "Status",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0005",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Status"
+        },
+        "localizedDescriptions" : {
+          "en" : "The status of the entire report. Note: This is not the status of any of the report components."
+        },
+        "aqlPath" : "/context/other_context[at0001]/items[at0005]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "macroscopic_breast_tissue_analysis_test_result",
+      "name" : "Macroscopic breast tissue analysis test result",
+      "localizedName" : "Macroscopic breast tissue analysis test result",
+      "rmType" : "OBSERVATION",
+      "nodeId" : "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "en" : "Macroscopic breast tissue analysis test result"
+      },
+      "localizedDescriptions" : {
+        "en" : "The result, including findings and the laboratory's interpretation, of an investigation performed on specimens collected from an individual or related to that individual."
+      },
+      "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']",
+      "children" : [ {
+        "id" : "any_event",
+        "name" : "Any event",
+        "localizedName" : "Any event",
+        "rmType" : "EVENT",
+        "nodeId" : "at0002",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "en" : "Any event"
+        },
+        "localizedDescriptions" : {
+          "en" : "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+        },
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]",
+        "children" : [ {
+          "id" : "test_name",
+          "name" : "Test name",
+          "localizedName" : "Test name",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0005",
+          "min" : 1,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Test name"
+          },
+          "localizedDescriptions" : {
+            "en" : "Name of the laboratory investigation performed on the specimen(s)."
+          },
+          "annotations" : {
+            "comment" : "A test result may be for a single analyte, or a group of items, including panel tests. It is strongly recommended that 'Test name' be coded with a terminology, for example LOINC or SNOMED CT. For example: 'Glucose', 'Urea and Electrolytes', 'Swab', 'Cortisol (am)', 'Potassium in perspiration' or 'Melanoma histopathology'. The name may sometimes include specimen type and patient state, for example 'Fasting blood glucose' or include other information, as 'Potassium (PNA blood gas)'."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "specimen",
+          "name" : "Specimen",
+          "localizedName" : "Specimen",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.specimen.v1",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Specimen"
+          },
+          "localizedDescriptions" : {
+            "en" : "A physical sample collected from, or related to, an individual for the purpose of investigation, examination or analysis."
+          },
+          "annotations" : {
+            "comment" : "For example: Tissue or body fluid."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]",
+          "children" : [ {
+            "id" : "specimen_type",
+            "name" : "Specimen type",
+            "localizedName" : "Specimen type",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0029",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen type"
+            },
+            "localizedDescriptions" : {
+              "en" : "The type of specimen."
+            },
+            "annotations" : {
+              "comment" : "For example: Venous blood, bacterial culture, cytology, or tissue sample. Coding of the specimen type with a terminology is preferred, where possible.",
+              "fhir_mapping" : "Specimen.type"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0029]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "1163303005",
+                "label" : "Sentinel lymph node (portvaktslymfknuta)",
+                "localizedLabels" : {
+                  "en" : ""
+                }
+              }, {
+                "value" : "38000004",
+                "label" : "Lymfa",
+                "localizedLabels" : {
+                  "en" : ""
+                }
+              }, {
+                "value" : "76752008",
+                "label" : "Bröstvävnad",
+                "localizedLabels" : {
+                  "en" : ""
+                }
+              } ],
+              "terminology" : "http://snomed.info/id/"
+            } ]
+          }, {
+            "id" : "specimen_label",
+            "name" : "Specimen label",
+            "localizedName" : "Specimen label",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0098",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen label"
+            },
+            "localizedDescriptions" : {
+              "en" : "A name or label describing the specimen."
+            },
+            "annotations" : {
+              "comment" : "Usually only relevant for anatomical pathology samples. For example: 'Sigmoid resection with a piece of bladder wall' or 'Aggregate of multiple skin biopsy fragments'."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0098]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "specimen_description",
+            "name" : "Specimen description",
+            "localizedName" : "Specimen description",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0097",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen description"
+            },
+            "localizedDescriptions" : {
+              "en" : "Narrative description about the specimen being examined."
+            },
+            "annotations" : {
+              "comment" : "For example: the color and viscosity of a liquid; the shape of a solid tissue; or a description of tissue fragments."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0097]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "number_of_fragments",
+            "name" : "Number of fragments",
+            "localizedName" : "Number of fragments",
+            "rmType" : "DV_COUNT",
+            "nodeId" : "at0099",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Number of fragments"
+            },
+            "localizedDescriptions" : {
+              "en" : "The number of tissue fragments comprising the specimen."
+            },
+            "annotations" : {
+              "comment" : "Usually only relevant when a number of tissue fragments are being examined and reported on as a single specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0099]/value",
+            "inputs" : [ {
+              "type" : "INTEGER"
+            } ]
+          }, {
+            "id" : "specimen_measurements",
+            "name" : "Specimen measurements",
+            "localizedName" : "Specimen measurements",
+            "rmType" : "CLUSTER",
+            "nodeId" : "openEHR-EHR-CLUSTER.specimen_measurements.v1",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen measurements"
+            },
+            "localizedDescriptions" : {
+              "en" : "The measurements of a specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.specimen_measurements.v1]",
+            "children" : [ {
+              "id" : "length",
+              "name" : "Length",
+              "localizedName" : "Length",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0042",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "en" : "Length"
+              },
+              "localizedDescriptions" : {
+                "en" : "The measured length of the longest aspect of a specimen (e.g. longest edge of a rectangular specimen) or the measured length of a specimen along its longitudinal axis (e.g. 2cm of bowel, measured along the axis of the bowel, and even if the measured length is shorter than the diameter of the bowel itself)."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.specimen_measurements.v1]/items[at0042,'Length']/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "cm",
+                  "label" : "cm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "mm",
+                  "label" : "mm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "mm"
+              } ]
+            }, {
+              "id" : "width",
+              "name" : "Width",
+              "localizedName" : "Width",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0042",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "en" : "Width"
+              },
+              "localizedDescriptions" : {
+                "en" : "The measured length of widest aspect of a specimen, usually perpendicular to the length or the measured length of the second side of two sides."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.specimen_measurements.v1]/items[at0042,'Width']/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "cm",
+                  "label" : "cm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "mm",
+                  "label" : "mm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "mm"
+              } ]
+            }, {
+              "id" : "depth",
+              "name" : "Depth",
+              "localizedName" : "Depth",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0042",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "en" : "Depth"
+              },
+              "localizedDescriptions" : {
+                "en" : "The measured length of the third aspect of a specimen, usually perpendicular to the length and width or measurement of the vertical aspect of a specimen from the surface to the base. Also known as thickness."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.specimen_measurements.v1]/items[at0042,'Depth']/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "cm",
+                  "label" : "cm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "mm",
+                  "label" : "mm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "mm"
+              } ]
+            }, {
+              "id" : "weight",
+              "name" : "Weight",
+              "localizedName" : "Weight",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0020",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Weight"
+              },
+              "localizedDescriptions" : {
+                "en" : "The measured value of the mass of the specimen."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.specimen_measurements.v1]/items[at0020]/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "g",
+                  "label" : "g",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "kg",
+                  "label" : "kg",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "g"
+              } ],
+              "termBindings" : {
+                "SNOMED-CT" : {
+                  "value" : "[SNOMED-CT(2021)::371506001]",
+                  "terminologyId" : "SNOMED-CT"
+                }
+              }
+            } ]
+          }, {
+            "id" : "collection_method",
+            "name" : "Collection method",
+            "localizedName" : "Collection method",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0007",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Collection method"
+            },
+            "localizedDescriptions" : {
+              "en" : "The method of collection used."
+            },
+            "annotations" : {
+              "comment" : "For example: venepuncture, biopsy, resection. Coding of the collection method with a terminology is preferred, where possible. If the collection method is included in the 'Specimen type' via precoordinated codes, this data element becomes redundant.",
+              "fhir_mapping" : "Specimen.collection.method"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0007]/value",
+            "inputs" : [ {
+              "type" : "TEXT",
+              "list" : [ {
+                "value" : "Mastektomi",
+                "label" : "Mastektomi"
+              }, {
+                "value" : "Resektion/partiell mastektomi",
+                "label" : "Resektion/partiell mastektomi"
+              } ],
+              "listOpen" : false
+            } ]
+          }, {
+            "id" : "anatomical_location",
+            "name" : "Anatomical location",
+            "localizedName" : "Anatomical location",
+            "rmType" : "CLUSTER",
+            "nodeId" : "openEHR-EHR-CLUSTER.anatomical_location.v1",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Anatomical location"
+            },
+            "localizedDescriptions" : {
+              "en" : "A physical site on or within the human body."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]",
+            "children" : [ {
+              "id" : "body_site_name",
+              "name" : "Body site name",
+              "localizedName" : "Body site name",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0001",
+              "min" : 1,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Body site name"
+              },
+              "localizedDescriptions" : {
+                "en" : "Identification of a single physical site either on, or within, the human body."
+              },
+              "annotations" : {
+                "comment" : "This data element is the only mandated data point in this archetype and should be used as the primary data point to record an anatomical location with a commonly used name. It is strongly recommended that 'Body site name' be recorded as specifically as is anatomically possible. For example: record 'upper eyelid' rather than recording 'eyelid' with 'upper' as a qualifier; 'fifth rib' rather than 'rib' with a numeric qualifier. Use the other data elements for laterality, aspect, region and anatomical line to provide more detail.\r\n\r\nThis data element should be coded with a terminology capable of triggering decision support, where possible - an appropriate termset for use here could comprise individual concepts or a list of precoordinated terms. Free text should be used only if there is no appropriate terminology available.\r\n\r\nIf body site name is already identified in the parent archetype, then this data element may be redundant. Alternatively, a use case has been identified where the value may be duplicated into this element to support semantic querying using this archetype, rather than the data element within the parent."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0001]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            }, {
+              "id" : "specific_site",
+              "name" : "Specific site",
+              "localizedName" : "Specific site",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0065",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Specific site"
+              },
+              "localizedDescriptions" : {
+                "en" : "Additional detail using a specific region or a point on, or within, the identified body site."
+              },
+              "annotations" : {
+                "comment" : "Use to increase precision of identification of the body site, if required. For example, the upper right quadrant or McBurney's point on the abdominal wall or interphalangeal joint of the great toe. If the 'Body site name' data element uses pre-coordinated terms that include the specific site, then this data element is redundant."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0065]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            }, {
+              "id" : "laterality",
+              "name" : "Laterality",
+              "localizedName" : "Laterality",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0002",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Laterality"
+              },
+              "localizedDescriptions" : {
+                "en" : "The side of the body on which the identified  body site is located."
+              },
+              "annotations" : {
+                "comment" : "If the identified body site has no laterality, this data element should not have a value. \r\nIf the 'Body site name' data element uses pre-coordinated terms that include laterality, then this data element is redundant."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0002]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0003",
+                  "label" : "Left",
+                  "localizedLabels" : {
+                    "en" : "Left"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Left side of the body."
+                  },
+                  "termBindings" : {
+                    "SNOMED-CT" : {
+                      "value" : "[SNOMED-CT::7771000]",
+                      "terminologyId" : "SNOMED-CT"
+                    }
+                  }
+                }, {
+                  "value" : "at0004",
+                  "label" : "Right",
+                  "localizedLabels" : {
+                    "en" : "Right"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Right side of the body."
+                  },
+                  "termBindings" : {
+                    "SNOMED-CT" : {
+                      "value" : "[SNOMED-CT::24028007]",
+                      "terminologyId" : "SNOMED-CT"
+                    }
+                  }
+                } ]
+              } ],
+              "termBindings" : {
+                "SNOMED-CT" : {
+                  "value" : "[SNOMED-CT::272741003]",
+                  "terminologyId" : "SNOMED-CT"
+                }
+              }
+            }, {
+              "id" : "aspect",
+              "name" : "Aspect",
+              "localizedName" : "Aspect",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0064",
+              "min" : 0,
+              "max" : 2,
+              "localizedNames" : {
+                "en" : "Aspect"
+              },
+              "localizedDescriptions" : {
+                "en" : "Qualifying detail about the specific aspect of the identified body site."
+              },
+              "annotations" : {
+                "comment" : "Use to increase precision of identification of the body site, if required. Common aspects have been included as a value set, which can be extended over time, plus a free text option. Assumes that the body is being described while in the anatomical position. For example: proximal urethra; plantar aspect of the left thumb. Multiple aspects can also be described, if required, by allowing for 0..2 occurrences. For example: a lesion may be on the left anterior/lateral (ie anterolateral) chest wall. If the 'Body site name' data element uses pre-coordinated terms that include the aspect, then this data element is redundant."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0064]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0067",
+                  "label" : "Medial",
+                  "localizedLabels" : {
+                    "en" : "Medial"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the midline of the body site."
+                  }
+                }, {
+                  "value" : "at0068",
+                  "label" : "Lateral",
+                  "localizedLabels" : {
+                    "en" : "Lateral"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the side, or edge, of the body site."
+                  }
+                }, {
+                  "value" : "at0069",
+                  "label" : "Superior",
+                  "localizedLabels" : {
+                    "en" : "Superior"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Above the body site, often meaning towards the head."
+                  }
+                }, {
+                  "value" : "at0070",
+                  "label" : "Inferior",
+                  "localizedLabels" : {
+                    "en" : "Inferior"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Below the body site, often meaning towards the feet."
+                  }
+                }, {
+                  "value" : "at0071",
+                  "label" : "Anterior",
+                  "localizedLabels" : {
+                    "en" : "Anterior"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the front, or ventral surface, of  the body site."
+                  }
+                }, {
+                  "value" : "at0072",
+                  "label" : "Posterior",
+                  "localizedLabels" : {
+                    "en" : "Posterior"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the back, or dorsal surface, of the body site."
+                  }
+                }, {
+                  "value" : "at0073",
+                  "label" : "Proximal",
+                  "localizedLabels" : {
+                    "en" : "Proximal"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "More central or closer to the point of attachment, and usually describing part of a limb, digit or appendage."
+                  }
+                }, {
+                  "value" : "at0074",
+                  "label" : "Distal",
+                  "localizedLabels" : {
+                    "en" : "Distal"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "More peripheral, or further from the point of attachment, and usually describing part of a limb, digit or appendage."
+                  }
+                }, {
+                  "value" : "at0080",
+                  "label" : "Deep",
+                  "localizedLabels" : {
+                    "en" : "Deep"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Away from the surface of the body site."
+                  }
+                }, {
+                  "value" : "at0081",
+                  "label" : "Superficial",
+                  "localizedLabels" : {
+                    "en" : "Superficial"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the surface of the body site."
+                  }
+                }, {
+                  "value" : "at0075",
+                  "label" : "Palmar",
+                  "localizedLabels" : {
+                    "en" : "Palmar"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the palm of the hand."
+                  }
+                }, {
+                  "value" : "at0076",
+                  "label" : "Plantar",
+                  "localizedLabels" : {
+                    "en" : "Plantar"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the sole of the foot."
+                  }
+                }, {
+                  "value" : "at0082",
+                  "label" : "Dorsal",
+                  "localizedLabels" : {
+                    "en" : "Dorsal"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the back of the hand or top of the foot. To be used as opposites of palmar or plantar, not as a synonym of posterior."
+                  }
+                }, {
+                  "value" : "at0077",
+                  "label" : "Mid",
+                  "localizedLabels" : {
+                    "en" : "Mid"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "In the middle of the body site."
+                  }
+                }, {
+                  "value" : "at0078",
+                  "label" : "Oral",
+                  "localizedLabels" : {
+                    "en" : "Oral"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the mouth. Usually used to describe locations within the digestive system."
+                  }
+                }, {
+                  "value" : "at0079",
+                  "label" : "Anal",
+                  "localizedLabels" : {
+                    "en" : "Anal"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Towards the anus. Usually used to describe locations within the digestive system."
+                  }
+                } ],
+                "listOpen" : true
+              }, {
+                "suffix" : "other",
+                "type" : "TEXT"
+              } ]
+            }, {
+              "id" : "description",
+              "name" : "Description",
+              "localizedName" : "Description",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0023",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Description"
+              },
+              "localizedDescriptions" : {
+                "en" : "Narrative description that can be used to further refine and support the 'Body site name'."
+              },
+              "annotations" : {
+                "comment" : "For example: adjacent to the vermilion border; a tattoo covers the bottom half of this area."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0023]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            }, {
+              "id" : "circular_anatomical_location",
+              "name" : "Circular anatomical location",
+              "localizedName" : "Circular anatomical location",
+              "rmType" : "CLUSTER",
+              "nodeId" : "openEHR-EHR-CLUSTER.anatomical_location_circle.v1",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Circular anatomical location"
+              },
+              "localizedDescriptions" : {
+                "en" : "A physical site on or within the human body that is described in terms of the direction, and optionally the distance, of the site from a central landmark."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]",
+              "children" : [ {
+                "id" : "reference_direction",
+                "name" : "Reference direction",
+                "localizedName" : "Reference direction",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0065",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Reference direction"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Identification of a single direction which represents the 12 o'clock or 0° position on an imaginary circle superimposed over the body site, as seen by the examiner."
+                },
+                "annotations" : {
+                  "comment" : "For example: the reference axis is commonly towards the head if examining the breast or detail on a skin lesion; towards the perineum if examining the anus in the lithotomy position; or towards the anterior humeral line if examining the humerus."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0065]/value",
+                "inputs" : [ {
+                  "type" : "TEXT",
+                  "defaultValue" : "Kranialt = kl 12"
+                } ]
+              }, {
+                "id" : "centre_landmark",
+                "name" : "Centre landmark",
+                "localizedName" : "Centre landmark",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0079",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Centre landmark"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Identified body site used as a reference point for centre of the imaginary circle."
+                },
+                "annotations" : {
+                  "comment" : "For example: the nipple when examining a breast; or the anus when examining haemorrhoids."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0079]/value",
+                "inputs" : [ {
+                  "type" : "TEXT",
+                  "defaultValue" : "mamill"
+                } ]
+              }, {
+                "id" : "circular_direction",
+                "name" : "Circular direction",
+                "localizedName" : "Circular direction",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0061",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Circular direction"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Identification of the angle of the direction to the physical site relative to the reference direction, either as the position of an hour hand on a clockface or number of degrees."
+                },
+                "annotations" : {
+                  "comment" : "For example: the position of haemorrhoids in the anal canal are commonly described at 3 o'clock, 7 o'clock and 11 o'clock. In this situation the perineum is situated at 12 o'clock with patient in the lithotomy position, and regarded as the reference direction. For degrees, positive values are angles in the clockwise direction, while negative values are in the anti-clockwise direction."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0061]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0067",
+                    "label" : "One o'clock",
+                    "localizedLabels" : {
+                      "en" : "One o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the one o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0068",
+                    "label" : "Two o'clock",
+                    "localizedLabels" : {
+                      "en" : "Two o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the two o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0069",
+                    "label" : "Three o'clock",
+                    "localizedLabels" : {
+                      "en" : "Three o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the three o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0070",
+                    "label" : "Four o'clock",
+                    "localizedLabels" : {
+                      "en" : "Four o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the four o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0071",
+                    "label" : "Five o'clock",
+                    "localizedLabels" : {
+                      "en" : "Five o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the five o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0072",
+                    "label" : "Six o'clock",
+                    "localizedLabels" : {
+                      "en" : "Six o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the six o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0073",
+                    "label" : "Seven o'clock",
+                    "localizedLabels" : {
+                      "en" : "Seven o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the seven o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0074",
+                    "label" : "Eight o'clock",
+                    "localizedLabels" : {
+                      "en" : "Eight o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the eight o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0075",
+                    "label" : "Nine o'clock",
+                    "localizedLabels" : {
+                      "en" : "Nine o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the nine o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0076",
+                    "label" : "Ten o'clock",
+                    "localizedLabels" : {
+                      "en" : "Ten o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the ten o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0077",
+                    "label" : "Eleven o'clock",
+                    "localizedLabels" : {
+                      "en" : "Eleven o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the eleven o'clock position relative to the identified reference point."
+                    }
+                  }, {
+                    "value" : "at0078",
+                    "label" : "Twelve o'clock",
+                    "localizedLabels" : {
+                      "en" : "Twelve o'clock"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The body site is located at the twelve o'clock position relative to the identified reference point."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "distance_from_landmark",
+                "name" : "Distance from landmark",
+                "localizedName" : "Distance from landmark",
+                "rmType" : "DV_QUANTITY",
+                "nodeId" : "at0080",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Distance from landmark"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Distance of location from the identified central landmark."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0080]/value",
+                "inputs" : [ {
+                  "suffix" : "magnitude",
+                  "type" : "DECIMAL"
+                }, {
+                  "suffix" : "unit",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "cm",
+                    "label" : "cm",
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0.0
+                      },
+                      "precision" : {
+                        "minOp" : ">=",
+                        "min" : 1,
+                        "maxOp" : "<=",
+                        "max" : 1
+                      }
+                    }
+                  }, {
+                    "value" : "[in_i]",
+                    "label" : "[in_i]",
+                    "localizedLabels" : {
+                      "en" : "in"
+                    },
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0.0
+                      },
+                      "precision" : {
+                        "minOp" : ">=",
+                        "min" : 1,
+                        "maxOp" : "<=",
+                        "max" : 1
+                      }
+                    }
+                  }, {
+                    "value" : "mm",
+                    "label" : "mm",
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0.0
+                      },
+                      "precision" : {
+                        "minOp" : ">=",
+                        "min" : 1,
+                        "maxOp" : "<=",
+                        "max" : 1
+                      }
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "description",
+                "name" : "Description",
+                "localizedName" : "Description",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0023",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Description"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Narrative description that can be used to further refine and support structured data about the circular location."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0023]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "parent_specimen_identifier",
+            "name" : "Parent specimen identifier",
+            "localizedName" : "Parent specimen identifier",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0003",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "Parent specimen identifier"
+            },
+            "localizedDescriptions" : {
+              "en" : "Unique identifier of the parent specimen, where the specimen is split into sub-samples."
+            },
+            "annotations" : {
+              "comment" : "For example: A specific histology slide specimen can have a specific paraffin wax block as its parent specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0003]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "specimen_quality_issue",
+            "name" : "Specimen quality issue",
+            "localizedName" : "Specimen quality issue",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0042",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "Specimen quality issue"
+            },
+            "localizedDescriptions" : {
+              "en" : "A specific quality issue with a specimen."
+            },
+            "annotations" : {
+              "comment" : "Coding of the specimen quality issues with a terminology is preferred, where possible."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0042]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0054",
+                "label" : "Incorrect additive",
+                "localizedLabels" : {
+                  "en" : "Incorrect additive"
+                },
+                "localizedDescriptions" : {
+                  "en" : "An incorrect additive such as a transport medium or preservative was added to the specimen."
+                }
+              }, {
+                "value" : "at0055",
+                "label" : "Insufficient amount",
+                "localizedLabels" : {
+                  "en" : "Insufficient amount"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The available amount of specimen was insufficient to undertake the examination."
+                }
+              }, {
+                "value" : "at0090",
+                "label" : "Handling error",
+                "localizedLabels" : {
+                  "en" : "Handling error"
+                },
+                "localizedDescriptions" : {
+                  "en" : "An error arose when handling the specimen. For example: Incorrect storage, broken container."
+                }
+              }, {
+                "value" : "at0095",
+                "label" : "Incorrectly labelled",
+                "localizedLabels" : {
+                  "en" : "Incorrectly labelled"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was labelled incorrectly."
+                }
+              }, {
+                "value" : "at0092",
+                "label" : "Technical failure",
+                "localizedLabels" : {
+                  "en" : "Technical failure"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen could not be analysed for technical reasons."
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "adequacy_for_testing",
+            "name" : "Adequacy for testing",
+            "localizedName" : "Adequacy for testing",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0041",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Adequacy for testing"
+            },
+            "localizedDescriptions" : {
+              "en" : "Information about whether the specimen was adequate for testing."
+            },
+            "annotations" : {
+              "comment" : "This element is intended to be used to record a judgement about whether or not the specimen quality was good enough for testing, and whether or not testing has been carried out. Coding of the specimen quality issues with a terminology is preferred, where possible."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0041]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0062",
+                "label" : "Satisfactory",
+                "localizedLabels" : {
+                  "en" : "Satisfactory"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen is of sufficient quality to allow reporting."
+                }
+              }, {
+                "value" : "at0063",
+                "label" : "Unsatisfactory - analysed",
+                "localizedLabels" : {
+                  "en" : "Unsatisfactory - analysed"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen is unsatisfactory but has been analysed."
+                }
+              }, {
+                "value" : "at0064",
+                "label" : "Unsatisfactory - not analysed",
+                "localizedLabels" : {
+                  "en" : "Unsatisfactory - not analysed"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen is unsatisfactory and has not been analysed."
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "time",
+          "name" : "Time",
+          "rmType" : "DV_DATE_TIME",
+          "min" : 1,
+          "max" : 1,
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/data[at0001]/events[at0002]/time",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ],
+          "inContext" : true
+        } ]
+      }, {
+        "id" : "language",
+        "name" : "Language",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/language",
+        "inContext" : true
+      }, {
+        "id" : "encoding",
+        "name" : "Encoding",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/encoding",
+        "inContext" : true
+      }, {
+        "id" : "subject",
+        "name" : "Subject",
+        "rmType" : "PARTY_PROXY",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Macroscopic breast tissue analysis test result']/subject",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_scheme",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_namespace",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "name",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "microscopic_breast_tissue_analysis_test_result",
+      "name" : "Microscopic breast tissue analysis test result",
+      "localizedName" : "Microscopic breast tissue analysis test result",
+      "rmType" : "OBSERVATION",
+      "nodeId" : "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "en" : "Microscopic breast tissue analysis test result"
+      },
+      "localizedDescriptions" : {
+        "en" : "The result, including findings and the laboratory's interpretation, of an investigation performed on specimens collected from an individual or related to that individual."
+      },
+      "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']",
+      "children" : [ {
+        "id" : "any_event",
+        "name" : "Any event",
+        "localizedName" : "Any event",
+        "rmType" : "EVENT",
+        "nodeId" : "at0002",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "en" : "Any event"
+        },
+        "localizedDescriptions" : {
+          "en" : "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+        },
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]",
+        "children" : [ {
+          "id" : "test_name",
+          "name" : "Test name",
+          "localizedName" : "Test name",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0005",
+          "min" : 1,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Test name"
+          },
+          "localizedDescriptions" : {
+            "en" : "Name of the laboratory investigation performed on the specimen(s)."
+          },
+          "annotations" : {
+            "comment" : "A test result may be for a single analyte, or a group of items, including panel tests. It is strongly recommended that 'Test name' be coded with a terminology, for example LOINC or SNOMED CT. For example: 'Glucose', 'Urea and Electrolytes', 'Swab', 'Cortisol (am)', 'Potassium in perspiration' or 'Melanoma histopathology'. The name may sometimes include specimen type and patient state, for example 'Fasting blood glucose' or include other information, as 'Potassium (PNA blood gas)'."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "specimen",
+          "name" : "Specimen",
+          "localizedName" : "Specimen",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.specimen.v1",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Specimen"
+          },
+          "localizedDescriptions" : {
+            "en" : "A physical sample collected from, or related to, an individual for the purpose of investigation, examination or analysis."
+          },
+          "annotations" : {
+            "comment" : "For example: Tissue or body fluid."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]",
+          "children" : [ {
+            "id" : "specimen_type",
+            "name" : "Specimen type",
+            "localizedName" : "Specimen type",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0029",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen type"
+            },
+            "localizedDescriptions" : {
+              "en" : "The type of specimen."
+            },
+            "annotations" : {
+              "comment" : "For example: Venous blood, bacterial culture, cytology, or tissue sample. Coding of the specimen type with a terminology is preferred, where possible.",
+              "fhir_mapping" : "Specimen.type"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0029]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "specimen_label",
+            "name" : "Specimen label",
+            "localizedName" : "Specimen label",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0098",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen label"
+            },
+            "localizedDescriptions" : {
+              "en" : "A name or label describing the specimen."
+            },
+            "annotations" : {
+              "comment" : "Usually only relevant for anatomical pathology samples. For example: 'Sigmoid resection with a piece of bladder wall' or 'Aggregate of multiple skin biopsy fragments'."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0098]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "specimen_description",
+            "name" : "Specimen description",
+            "localizedName" : "Specimen description",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0097",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Specimen description"
+            },
+            "localizedDescriptions" : {
+              "en" : "Narrative description about the specimen being examined."
+            },
+            "annotations" : {
+              "comment" : "For example: the color and viscosity of a liquid; the shape of a solid tissue; or a description of tissue fragments."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0097]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "number_of_fragments",
+            "name" : "Number of fragments",
+            "localizedName" : "Number of fragments",
+            "rmType" : "DV_COUNT",
+            "nodeId" : "at0099",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Number of fragments"
+            },
+            "localizedDescriptions" : {
+              "en" : "The number of tissue fragments comprising the specimen."
+            },
+            "annotations" : {
+              "comment" : "Usually only relevant when a number of tissue fragments are being examined and reported on as a single specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0099]/value",
+            "inputs" : [ {
+              "type" : "INTEGER"
+            } ]
+          }, {
+            "id" : "laboratory_specimen_identifier",
+            "name" : "Laboratory specimen identifier",
+            "localizedName" : "Laboratory specimen identifier",
+            "rmType" : "DV_IDENTIFIER",
+            "nodeId" : "at0001",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Laboratory specimen identifier"
+            },
+            "localizedDescriptions" : {
+              "en" : "A unique identifier of the specimen, normally assigned by the laboratory."
+            },
+            "annotations" : {
+              "comment" : "Sometimes called the Accession Identifier. Specimen containers, for example vacuum vials or tissue cassettes, have their own identitiers which may be recorded in the 'Container identifier' element in the 'Specimen container' archetype.",
+              "fhir_mapping" : "Specimen.accessionIdentifier"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0001]/value",
+            "inputs" : [ {
+              "suffix" : "id",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "type",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "issuer",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "assigner",
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "external_identifier",
+            "name" : "External identifier",
+            "localizedName" : "External identifier",
+            "rmType" : "DV_IDENTIFIER",
+            "nodeId" : "at0088",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "External identifier"
+            },
+            "localizedDescriptions" : {
+              "en" : "A unique identifier of the specimen, assigned by a party external to the laboratory."
+            },
+            "annotations" : {
+              "comment" : "For example: 'Requester ID', 'Archive ID, 'Biobank ID'.",
+              "fhir_mapping" : "Specimen.identifier"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0088]/value",
+            "inputs" : [ {
+              "suffix" : "id",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "type",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "issuer",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "assigner",
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "date_time_received",
+            "name" : "Date/time received",
+            "localizedName" : "Date/time received",
+            "rmType" : "DV_DATE_TIME",
+            "nodeId" : "at0034",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Date/time received"
+            },
+            "localizedDescriptions" : {
+              "en" : "The date and time that the sample was received at the laboratory."
+            },
+            "annotations" : {
+              "fhir_mapping" : "Specimen.receivedTime"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0034]/value",
+            "inputs" : [ {
+              "type" : "DATETIME"
+            } ]
+          }, {
+            "id" : "sampling_context",
+            "name" : "Sampling context",
+            "localizedName" : "Sampling context",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0008",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "Sampling context"
+            },
+            "localizedDescriptions" : {
+              "en" : "The context in which the specimen is collected."
+            },
+            "annotations" : {
+              "comment" : "For example: 'fasting'; 'full bladder'; 'sterile field'; or special instructions on the handling or immediate processing of the sample, such as 'centrifuge on receipt'. This data element also be used to document any known deviations from collection or handling instructions, for example that the patient had not fasted, even when this had been originally requested. Coding of the 'Sampling context' with a terminology is preferred, where possible.\r\n\r\nIf this archetype is used within an INSTRUCTION archetype, the context will reflect the intended or desired conditions at sample collection. If this archetype is used for representing an ACTION archetype pathway step which correlates with the collection being performed or completed, the context will be reflecting the conditions that existed at sample collection and this may also be copied to the 'Confounding factors' element of the OBSERVATION.laboratory_test_result archetype."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0008]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "collection_method",
+            "name" : "Collection method",
+            "localizedName" : "Collection method",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0007",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Collection method"
+            },
+            "localizedDescriptions" : {
+              "en" : "The method of collection used."
+            },
+            "annotations" : {
+              "comment" : "For example: venepuncture, biopsy, resection. Coding of the collection method with a terminology is preferred, where possible. If the collection method is included in the 'Specimen type' via precoordinated codes, this data element becomes redundant.",
+              "fhir_mapping" : "Specimen.collection.method"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0007]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "collection_description",
+            "name" : "Collection description",
+            "localizedName" : "Collection description",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0079",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Collection description"
+            },
+            "localizedDescriptions" : {
+              "en" : "Narrative description about the collection of the specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0079]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "source_site",
+            "name" : "Source site",
+            "localizedName" : "Source site",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0087",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Source site"
+            },
+            "localizedDescriptions" : {
+              "en" : "Identification of the body site or other location from where the specimen is collected."
+            },
+            "annotations" : {
+              "comment" : "For example: 'wound on left calf', 'IV cannula right arm', 'right kidney'.\r\nCoding of the name of the source site with a terminology is preferred, where possible. Use this data element to record precoordinated source sites. If the requirements for recording the source site are determined at run-time by the application or require more complex modelling such as relative locations then use the 'Structured source site' SLOT in this archetype. If the source site is included in the 'Specimen type' via precoordinated codes, this data element becomes redundant."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0087]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "anatomical_location",
+            "name" : "Anatomical location",
+            "localizedName" : "Anatomical location",
+            "rmType" : "CLUSTER",
+            "nodeId" : "openEHR-EHR-CLUSTER.anatomical_location.v1",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Anatomical location"
+            },
+            "localizedDescriptions" : {
+              "en" : "A physical site on or within the human body."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]",
+            "children" : [ {
+              "id" : "body_site_name",
+              "name" : "Body site name",
+              "localizedName" : "Body site name",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0001",
+              "min" : 1,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Body site name"
+              },
+              "localizedDescriptions" : {
+                "en" : "Identification of a single physical site either on, or within, the human body."
+              },
+              "annotations" : {
+                "comment" : "This data element is the only mandated data point in this archetype and should be used as the primary data point to record an anatomical location with a commonly used name. It is strongly recommended that 'Body site name' be recorded as specifically as is anatomically possible. For example: record 'upper eyelid' rather than recording 'eyelid' with 'upper' as a qualifier; 'fifth rib' rather than 'rib' with a numeric qualifier. Use the other data elements for laterality, aspect, region and anatomical line to provide more detail.\r\n\r\nThis data element should be coded with a terminology capable of triggering decision support, where possible - an appropriate termset for use here could comprise individual concepts or a list of precoordinated terms. Free text should be used only if there is no appropriate terminology available.\r\n\r\nIf body site name is already identified in the parent archetype, then this data element may be redundant. Alternatively, a use case has been identified where the value may be duplicated into this element to support semantic querying using this archetype, rather than the data element within the parent."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0001]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            }, {
+              "id" : "specific_site",
+              "name" : "Specific site",
+              "localizedName" : "Specific site",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0065",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Specific site"
+              },
+              "localizedDescriptions" : {
+                "en" : "Additional detail using a specific region or a point on, or within, the identified body site."
+              },
+              "annotations" : {
+                "comment" : "Use to increase precision of identification of the body site, if required. For example, the upper right quadrant or McBurney's point on the abdominal wall or interphalangeal joint of the great toe. If the 'Body site name' data element uses pre-coordinated terms that include the specific site, then this data element is redundant."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0065]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "77831004",
+                  "label" : "Övre inre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                }, {
+                  "value" : "19100000",
+                  "label" : "Nedre inre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                }, {
+                  "value" : "76365002",
+                  "label" : "Övre yttre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                }, {
+                  "value" : "3564002",
+                  "label" : "Nedre yttre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                } ],
+                "terminology" : "http://snomed.info/id/"
+              } ]
+            } ]
+          }, {
+            "id" : "parent_specimen_identifier",
+            "name" : "Parent specimen identifier",
+            "localizedName" : "Parent specimen identifier",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0003",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "Parent specimen identifier"
+            },
+            "localizedDescriptions" : {
+              "en" : "Unique identifier of the parent specimen, where the specimen is split into sub-samples."
+            },
+            "annotations" : {
+              "comment" : "For example: A specific histology slide specimen can have a specific paraffin wax block as its parent specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0003]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "specimen_quality_issue",
+            "name" : "Specimen quality issue",
+            "localizedName" : "Specimen quality issue",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0042",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "Specimen quality issue"
+            },
+            "localizedDescriptions" : {
+              "en" : "A specific quality issue with a specimen."
+            },
+            "annotations" : {
+              "comment" : "Coding of the specimen quality issues with a terminology is preferred, where possible."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0042]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0052",
+                "label" : "Haemolysed",
+                "localizedLabels" : {
+                  "en" : "Haemolysed"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was haemolysed."
+                }
+              }, {
+                "value" : "at0053",
+                "label" : "Lipaemic",
+                "localizedLabels" : {
+                  "en" : "Lipaemic"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was lipaemic."
+                }
+              }, {
+                "value" : "at0089",
+                "label" : "Icteric",
+                "localizedLabels" : {
+                  "en" : "Icteric"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was icteric."
+                }
+              }, {
+                "value" : "at0094",
+                "label" : "Clotted",
+                "localizedLabels" : {
+                  "en" : "Clotted"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was clotted."
+                }
+              }, {
+                "value" : "at0054",
+                "label" : "Incorrect additive",
+                "localizedLabels" : {
+                  "en" : "Incorrect additive"
+                },
+                "localizedDescriptions" : {
+                  "en" : "An incorrect additive such as a transport medium or preservative was added to the specimen."
+                }
+              }, {
+                "value" : "at0055",
+                "label" : "Insufficient amount",
+                "localizedLabels" : {
+                  "en" : "Insufficient amount"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The available amount of specimen was insufficient to undertake the examination."
+                }
+              }, {
+                "value" : "at0090",
+                "label" : "Handling error",
+                "localizedLabels" : {
+                  "en" : "Handling error"
+                },
+                "localizedDescriptions" : {
+                  "en" : "An error arose when handling the specimen. For example: Incorrect storage, broken container."
+                }
+              }, {
+                "value" : "at0095",
+                "label" : "Incorrectly labelled",
+                "localizedLabels" : {
+                  "en" : "Incorrectly labelled"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was labelled incorrectly."
+                }
+              }, {
+                "value" : "at0091",
+                "label" : "Age",
+                "localizedLabels" : {
+                  "en" : "Age"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen was too old to analyse or to analyse accurately."
+                }
+              }, {
+                "value" : "at0092",
+                "label" : "Technical failure",
+                "localizedLabels" : {
+                  "en" : "Technical failure"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen could not be analysed for technical reasons."
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "adequacy_for_testing",
+            "name" : "Adequacy for testing",
+            "localizedName" : "Adequacy for testing",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0041",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Adequacy for testing"
+            },
+            "localizedDescriptions" : {
+              "en" : "Information about whether the specimen was adequate for testing."
+            },
+            "annotations" : {
+              "comment" : "This element is intended to be used to record a judgement about whether or not the specimen quality was good enough for testing, and whether or not testing has been carried out. Coding of the specimen quality issues with a terminology is preferred, where possible."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0041]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0062",
+                "label" : "Satisfactory",
+                "localizedLabels" : {
+                  "en" : "Satisfactory"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen is of sufficient quality to allow reporting."
+                }
+              }, {
+                "value" : "at0063",
+                "label" : "Unsatisfactory - analysed",
+                "localizedLabels" : {
+                  "en" : "Unsatisfactory - analysed"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen is unsatisfactory but has been analysed."
+                }
+              }, {
+                "value" : "at0064",
+                "label" : "Unsatisfactory - not analysed",
+                "localizedLabels" : {
+                  "en" : "Unsatisfactory - not analysed"
+                },
+                "localizedDescriptions" : {
+                  "en" : "The specimen is unsatisfactory and has not been analysed."
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "microscopic_findings_related_to_breast_cancer_update_suggestion",
+          "name" : "Microscopic  findings related to breast cancer (update suggestion)",
+          "localizedName" : "Microscopic  findings related to breast cancer (update suggestion)",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Microscopic  findings related to breast cancer (update suggestion)"
+          },
+          "localizedDescriptions" : {
+            "en" : "Microscopic anatomic pathology findings related to breast cancer."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]",
+          "children" : [ {
+            "id" : "dv_count",
+            "name" : "DV_COUNT",
+            "localizedName" : "DV_COUNT",
+            "rmType" : "DV_COUNT",
+            "nodeId" : "at0188",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "DV_COUNT"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0188]/value",
+            "inputs" : [ {
+              "type" : "INTEGER"
+            } ]
+          }, {
+            "id" : "histologic_grading",
+            "name" : "Histologic grading",
+            "localizedName" : "Histologic grading",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0015",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Histologic grading"
+            },
+            "localizedDescriptions" : {
+              "en" : "Histologic grading of breast cancer."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]",
+            "children" : [ {
+              "id" : "bloom_and_richardson_grade",
+              "name" : "Bloom and Richardson Grade",
+              "localizedName" : "Bloom and Richardson Grade",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0020",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Bloom and Richardson Grade"
+              },
+              "localizedDescriptions" : {
+                "en" : "Bloom and Richardson Histology Grade ( with modification by Elston and Ellis) is composed of three  components which are combined to produce a calculated Histology Grade."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]",
+              "children" : [ {
+                "id" : "mitosis_count",
+                "name" : "Mitosis count",
+                "localizedName" : "Mitosis count",
+                "rmType" : "DV_COUNT",
+                "nodeId" : "at0014",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Mitosis count"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Mitotic frequency is calculated from the number of mitoses per 10 high-power fields."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0014]/value",
+                "inputs" : [ {
+                  "type" : "INTEGER"
+                } ]
+              }, {
+                "id" : "mitotic_frequency_score",
+                "name" : "Mitotic frequency score",
+                "localizedName" : "Mitotic frequency score",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0175",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Mitotic frequency score"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Mitotic frequency score calculated from the mitosis count and the microscopy field diameter via a lookup table."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0175]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0176",
+                    "label" : "Score 1",
+                    "localizedLabels" : {
+                      "en" : "Score 1"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Low mitotic frequency."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0177",
+                    "label" : "Score 2",
+                    "localizedLabels" : {
+                      "en" : "Score 2"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Intermediate mitotic frequency."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0178",
+                    "label" : "Score 3",
+                    "localizedLabels" : {
+                      "en" : "Score 3"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "High mitotic frequency."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "nuclear_score",
+                "name" : "Nuclear score",
+                "localizedName" : "Nuclear score",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0016",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Nuclear score"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Nuclear score."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0016]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0050",
+                    "label" : "Score 1",
+                    "localizedLabels" : {
+                      "en" : "Score 1"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Size equivalent to 1.5–2 red blood cell diameters or normal duct epithelial nuclei; Diffuse chromatin; Inconspicuous nucleoli."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0051",
+                    "label" : "Score 2",
+                    "localizedLabels" : {
+                      "en" : "Score 2"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Size equivalent to 2–2.5 red blood cell diameters; Coarse chromatin; Infrequent nucleoli and mitoses."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0052",
+                    "label" : "Score 3",
+                    "localizedLabels" : {
+                      "en" : "Score 3"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Size > 2.5 red blood cell diameters; Pleomorphic vesicular nuclei; One or more prominent nucleoli; Frequent mitotic figures commonly present."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "tubular_formation_score",
+                "name" : "Tubular formation score",
+                "localizedName" : "Tubular formation score",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0017",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Tubular formation score"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Tubular formation score, representing the extent of tubular formation within invasive carcinoma cells."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0017]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0044",
+                    "label" : "Tubular formation score 1",
+                    "localizedLabels" : {
+                      "en" : "Tubular formation score 1"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Less than 75% of invasive carcinoma forming tubular or glandular structures."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0045",
+                    "label" : "Tubular formation score 2",
+                    "localizedLabels" : {
+                      "en" : "Tubular formation score 2"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "10-75% of invasive carcinoma forming tubular or glandular structures."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0046",
+                    "label" : "Tubular formation score 3",
+                    "localizedLabels" : {
+                      "en" : "Tubular formation score 3"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Less than 10% of invasive carcinoma forming tubular or glandular structures."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "histologic_grade",
+                "name" : "Histologic grade",
+                "localizedName" : "Histologic grade",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0018",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Histologic grade"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Bloom and Richardson Grade of breast cancer, derived from the total score of its components: Mitotic frequency score, Nuclear score and Tubular formation score."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0018]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0047",
+                    "label" : "Grade 1",
+                    "localizedLabels" : {
+                      "en" : "Grade 1"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Total score of 3-5."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0048",
+                    "label" : "Grade 2",
+                    "localizedLabels" : {
+                      "en" : "Grade 2"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Total score of 6 or 7."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0049",
+                    "label" : "Grade 3",
+                    "localizedLabels" : {
+                      "en" : "Grade 3"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Total score of 8 or 9."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "confounding_issues",
+                "name" : "Confounding issues",
+                "localizedName" : "Confounding issues",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0043",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Confounding issues"
+                },
+                "localizedDescriptions" : {
+                  "en" : "A text description of any assessment issues which may confound the accuracy of the Bloom and Richardson histologic grade."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0043]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "lobular_neoplasia",
+            "name" : "Lobular neoplasia",
+            "localizedName" : "Lobular neoplasia",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0060",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Lobular neoplasia"
+            },
+            "localizedDescriptions" : {
+              "en" : "Findings of lobular neoplasia and variants."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]",
+            "children" : [ {
+              "id" : "lobular_neoplasia",
+              "name" : "Lobular neoplasia",
+              "localizedName" : "Lobular neoplasia",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0061",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Lobular neoplasia"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of lobular neoplasia."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0061]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0167",
+                  "label" : "Present - classical",
+                  "localizedLabels" : {
+                    "en" : "Present - classical"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Classical lobular neoplasia is present."
+                  }
+                }, {
+                  "value" : "at0168",
+                  "label" : "Present - pleomorphic",
+                  "localizedLabels" : {
+                    "en" : "Present - pleomorphic"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Pleomorphic lobular neoplasia is present."
+                  }
+                }, {
+                  "value" : "at0169",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Lobular neoplasia is absent."
+                  }
+                }, {
+                  "value" : "at0170",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "The presence of lobular hyperplasia has not been determined."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "atypical_lobular_hyperplasia",
+              "name" : "Atypical lobular hyperplasia",
+              "localizedName" : "Atypical lobular hyperplasia",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0055",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Atypical lobular hyperplasia"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of atypical lobular hyperplasia."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0055]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0109",
+                  "label" : "Present - classical",
+                  "localizedLabels" : {
+                    "en" : "Present - classical"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Classical atypical lobular neoplasia is present."
+                  }
+                }, {
+                  "value" : "at0110",
+                  "label" : "Present - pleomorphic",
+                  "localizedLabels" : {
+                    "en" : "Present - pleomorphic"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Pleomorphic atypical lobular neoplasia is present."
+                  }
+                }, {
+                  "value" : "at0152",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Atypical lobular neoplasia is absent."
+                  }
+                }, {
+                  "value" : "at0153",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "The presence of atypical lobular neoplasia has not been determined."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "lobular_carcinoma-in-situ",
+              "name" : "Lobular carcinoma-in-situ",
+              "localizedName" : "Lobular carcinoma-in-situ",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0058",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Lobular carcinoma-in-situ"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of lobular carcinoma-in-situ."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0058]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0171",
+                  "label" : "Present - classical",
+                  "localizedLabels" : {
+                    "en" : "Present - classical"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Classical lobular carcinoma-in-situ is present."
+                  }
+                }, {
+                  "value" : "at0172",
+                  "label" : "Present - pleomorphic",
+                  "localizedLabels" : {
+                    "en" : "Present - pleomorphic"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Pleomorphic lobular carcinoma-in-situ is present."
+                  }
+                }, {
+                  "value" : "at0173",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Lobular carcinoma-in-situ is absent."
+                  }
+                }, {
+                  "value" : "at0174",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "The presence of lobular carcinoma-in-situ has not been determined."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "description",
+              "name" : "Description",
+              "localizedName" : "Description",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0056",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Description"
+              },
+              "localizedDescriptions" : {
+                "en" : "A text description of finding of lobular neoplasia."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0056]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            } ]
+          }, {
+            "id" : "paget_s_disease_of_nipple",
+            "name" : "Paget's disease of nipple",
+            "localizedName" : "Paget's disease of nipple",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0062",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Paget's disease of nipple"
+            },
+            "localizedDescriptions" : {
+              "en" : "Findings related to Paget's disease of the nipple."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0062]",
+            "children" : [ {
+              "id" : "paget_s_disease_of_nipple",
+              "name" : "Paget's disease of nipple",
+              "localizedName" : "Paget's disease of nipple",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0063",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Paget's disease of nipple"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of Paget's disease of the nipple."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0062]/items[at0063]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0119",
+                  "label" : "Present",
+                  "localizedLabels" : {
+                    "en" : "Present"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Paget's disease of the nipple is present."
+                  }
+                }, {
+                  "value" : "at0120",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Paget's disease of the nipple is absent."
+                  }
+                }, {
+                  "value" : "at0121",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Presence of Paget's disease of the nipple has not been determined."
+                  }
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "microcalcification",
+            "name" : "Microcalcification",
+            "localizedName" : "Microcalcification",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0024",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Microcalcification"
+            },
+            "localizedDescriptions" : {
+              "en" : "Findings related to microcalcification."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0024]",
+            "children" : [ {
+              "id" : "microcalcification",
+              "name" : "Microcalcification",
+              "localizedName" : "Microcalcification",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0025",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Microcalcification"
+              },
+              "localizedDescriptions" : {
+                "en" : "Findings of microcalcification."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0024]/items[at0025]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0122",
+                  "label" : "Present",
+                  "localizedLabels" : {
+                    "en" : "Present"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Microcalcification is present."
+                  }
+                }, {
+                  "value" : "at0126",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Microcalcification is absent."
+                  }
+                }, {
+                  "value" : "at0127",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Presence of microcalcification has not been determined."
+                  }
+                }, {
+                  "value" : "at0123",
+                  "label" : "Present - no evidence of necrosis",
+                  "localizedLabels" : {
+                    "en" : "Present - no evidence of necrosis"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Microcalcification is present with no evidence of necrosis."
+                  }
+                }, {
+                  "value" : "at0124",
+                  "label" : "Present - with evidence of necrosis",
+                  "localizedLabels" : {
+                    "en" : "Present - with evidence of necrosis"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Microcalcification is present with evidence of necrosis."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "associated_pathology",
+              "name" : "Associated pathology",
+              "localizedName" : "Associated pathology",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0026",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Associated pathology"
+              },
+              "localizedDescriptions" : {
+                "en" : "A text description of pathology associated with microcalcification."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0024]/items[at0026]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            } ]
+          }, {
+            "id" : "dcis_features",
+            "name" : "DCIS features",
+            "localizedName" : "DCIS features",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0064",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "DCIS features"
+            },
+            "localizedDescriptions" : {
+              "en" : "Findings related to Ductal carcinoma-in-situ (DCIS)."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]",
+            "children" : [ {
+              "id" : "calcification",
+              "name" : "Calcification",
+              "localizedName" : "Calcification",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0154",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Calcification"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of calcification in DCIS tissue."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0154]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0155",
+                  "label" : "Present with necrosis",
+                  "localizedLabels" : {
+                    "en" : "Present with necrosis"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Calcification with necrosis  is present in DCIS tissue."
+                  }
+                }, {
+                  "value" : "at0156",
+                  "label" : "Present without necrosis",
+                  "localizedLabels" : {
+                    "en" : "Present without necrosis"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Calcification without necrosis is present in DCIS tissue."
+                  }
+                }, {
+                  "value" : "at0157",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Calcification is absent from DCIS tissue."
+                  }
+                }, {
+                  "value" : "at0158",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Presence of calcification in DCIS tissue has not been determined."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "histologic_grade",
+              "name" : "Histologic grade",
+              "localizedName" : "Histologic grade",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0125",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Histologic grade"
+              },
+              "localizedDescriptions" : {
+                "en" : "Histologic grading of DCIS."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]",
+              "children" : [ {
+                "id" : "necrosis",
+                "name" : "Necrosis",
+                "localizedName" : "Necrosis",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0075",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Necrosis"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Findings of tumour necrosis."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]/items[at0075]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0076",
+                    "label" : "Present (non-comedo type)",
+                    "localizedLabels" : {
+                      "en" : "Present (non-comedo type)"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Non-comedo type of tumour necrosis is present."
+                    }
+                  }, {
+                    "value" : "at0078",
+                    "label" : "Present (Comedo type)",
+                    "localizedLabels" : {
+                      "en" : "Present (Comedo type)"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Comedo type of tumour necrosis is present."
+                    }
+                  }, {
+                    "value" : "at0077",
+                    "label" : "Absent or minimal",
+                    "localizedLabels" : {
+                      "en" : "Absent or minimal"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Tumour necrosis is absent or minimal."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "nuclear_score",
+                "name" : "Nuclear score",
+                "localizedName" : "Nuclear score",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0070",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Nuclear score"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Nuclear score, using the Elston and Ellis modification of the Bloom and\r\n Richardson system for grading invasive carcinoma."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]/items[at0070]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0071",
+                    "label" : "Score 1",
+                    "localizedLabels" : {
+                      "en" : "Score 1"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Size equivalent to 1.5–2 red blood cell diameters or normal duct epithelial nuclei; Diffuse chromatin; Inconspicuous nucleoli."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0072",
+                    "label" : "Score 2",
+                    "localizedLabels" : {
+                      "en" : "Score 2"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Size equivalent to 2–2.5 red blood cell diameters; Coarse chromatin; Infrequent nucleoli and mitoses."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0073",
+                    "label" : "Score 3",
+                    "localizedLabels" : {
+                      "en" : "Score 3"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Size > 2.5 red blood cell diameters; Pleomorphic vesicular nuclei; One or more prominent nucleoli; Frequent mitotic figures commonly present."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "comment",
+                "name" : "Comment",
+                "localizedName" : "Comment",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0179",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Comment"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Comment on estimation of the histologic grade."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]/items[at0179]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            }, {
+              "id" : "dcis_architecture",
+              "name" : "DCIS Architecture",
+              "localizedName" : "DCIS Architecture",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0128",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "DCIS Architecture"
+              },
+              "localizedDescriptions" : {
+                "en" : "Findings related to architecture of the ductal carcinoma-in-situ."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0128]",
+              "children" : [ {
+                "id" : "dominant_pattern",
+                "name" : "Dominant pattern",
+                "localizedName" : "Dominant pattern",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0130",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Dominant pattern"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Findingof the dominant DCIS architectural pattern."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0128]/items[at0130]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0132",
+                    "label" : "Solid",
+                    "localizedLabels" : {
+                      "en" : "Solid"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Solid pattern of ductal carcinoma-in-situ."
+                    }
+                  }, {
+                    "value" : "at0133",
+                    "label" : "Cribriform",
+                    "localizedLabels" : {
+                      "en" : "Cribriform"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Cribriform pattern of ductal carcinoma-in-situ."
+                    }
+                  }, {
+                    "value" : "at0134",
+                    "label" : "Micropapillary",
+                    "localizedLabels" : {
+                      "en" : "Micropapillary"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Micropapillary pattern of ductal carcinoma-in-situ."
+                    }
+                  }, {
+                    "value" : "at0135",
+                    "label" : "Apocrine",
+                    "localizedLabels" : {
+                      "en" : "Apocrine"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Apocrine pattern of ductal carcinoma-in-situ."
+                    }
+                  }, {
+                    "value" : "at0136",
+                    "label" : "Papillary",
+                    "localizedLabels" : {
+                      "en" : "Papillary"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Papillary pattern of ductal carcinoma-in-situ."
+                    }
+                  }, {
+                    "value" : "at0137",
+                    "label" : "Indeterminate",
+                    "localizedLabels" : {
+                      "en" : "Indeterminate"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "The dominant pattern of ductal carcinoma-in-situ has not been determined."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "description",
+                "name" : "Description",
+                "localizedName" : "Description",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0131",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Description"
+                },
+                "localizedDescriptions" : {
+                  "en" : "A text description of the architectural pattern."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0128]/items[at0131]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "hormone_receptor_assays",
+            "name" : "Hormone Receptor assays",
+            "localizedName" : "Hormone Receptor assays",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0094",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Hormone Receptor assays"
+            },
+            "localizedDescriptions" : {
+              "en" : "Immunohistochemical assays of oestrogen receptor (ER) and progesterone receptor (PR)."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]",
+            "children" : [ {
+              "id" : "oestrogen_receptor_assay_er",
+              "name" : "Oestrogen receptor assay (ER)",
+              "localizedName" : "Oestrogen receptor assay (ER)",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0095",
+              "min" : 0,
+              "max" : 2,
+              "localizedNames" : {
+                "en" : "Oestrogen receptor assay (ER)"
+              },
+              "localizedDescriptions" : {
+                "en" : "Oestrogen Receptor assay (ER)."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]",
+              "children" : [ {
+                "id" : "er_result",
+                "name" : "ER result",
+                "localizedName" : "ER result",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0096",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "ER result"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Oestrogen Receptor assay result."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]/items[at0096]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0097",
+                    "label" : "Positive",
+                    "localizedLabels" : {
+                      "en" : "Positive"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Oestrogen Receptor assay result is positive."
+                    }
+                  }, {
+                    "value" : "at0098",
+                    "label" : "Negative",
+                    "localizedLabels" : {
+                      "en" : "Negative"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Oestrogen Receptor assay result is negative."
+                    }
+                  }, {
+                    "value" : "at0099",
+                    "label" : "Equivocal",
+                    "localizedLabels" : {
+                      "en" : "Equivocal"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Oestrogen Receptor assay result is equivocal."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "proportion_of_nuclei_stained",
+                "name" : "Proportion of nuclei stained",
+                "localizedName" : "Proportion of nuclei stained",
+                "rmType" : "DV_PROPORTION",
+                "nodeId" : "at0100",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Proportion of nuclei stained"
+                },
+                "localizedDescriptions" : {
+                  "en" : "An estimate of the percentage of nuclei stained."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]/items[at0100]/value",
+                "proportionTypes" : [ "integer_fraction", "unitary", "percent", "ratio", "fraction" ],
+                "inputs" : [ {
+                  "suffix" : "numerator",
+                  "type" : "DECIMAL"
+                }, {
+                  "suffix" : "denominator",
+                  "type" : "DECIMAL"
+                } ]
+              }, {
+                "id" : "predominant_staining_intensity",
+                "name" : "Predominant staining intensity",
+                "localizedName" : "Predominant staining intensity",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0101",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Predominant staining intensity"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Predominant intensity of staining."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]/items[at0101]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0104",
+                    "label" : "Low",
+                    "localizedLabels" : {
+                      "en" : "Low"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Predominant intensity of staining is low."
+                    }
+                  }, {
+                    "value" : "at0105",
+                    "label" : "Intermediate",
+                    "localizedLabels" : {
+                      "en" : "Intermediate"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Predominant intensity of staining is intermediate."
+                    }
+                  }, {
+                    "value" : "at0106",
+                    "label" : "High",
+                    "localizedLabels" : {
+                      "en" : "High"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Predominant intensity of staining is high."
+                    }
+                  } ]
+                } ]
+              } ]
+            }, {
+              "id" : "progesterone_receptor_assay_pr",
+              "name" : "Progesterone receptor assay (PR)",
+              "localizedName" : "Progesterone receptor assay (PR)",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0102",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Progesterone receptor assay (PR)"
+              },
+              "localizedDescriptions" : {
+                "en" : "Progesterone Receptor (PR) assay."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]",
+              "children" : [ {
+                "id" : "pr_result",
+                "name" : "PR result",
+                "localizedName" : "PR result",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0138",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "PR result"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Progesterone Receptor assay result."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]/items[at0138]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0139",
+                    "label" : "Positive",
+                    "localizedLabels" : {
+                      "en" : "Positive"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Progesterone Receptor assay result is positive."
+                    }
+                  }, {
+                    "value" : "at0140",
+                    "label" : "Negative",
+                    "localizedLabels" : {
+                      "en" : "Negative"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Progesterone Receptor assay result is negative."
+                    }
+                  }, {
+                    "value" : "at0141",
+                    "label" : "Equivocal",
+                    "localizedLabels" : {
+                      "en" : "Equivocal"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Progesterone Receptor assay result is equivocal."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "proportion_of_nuclei_stained",
+                "name" : "Proportion of nuclei stained",
+                "localizedName" : "Proportion of nuclei stained",
+                "rmType" : "DV_PROPORTION",
+                "nodeId" : "at0162",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Proportion of nuclei stained"
+                },
+                "localizedDescriptions" : {
+                  "en" : "An estimate of the percentage of nuclei stained."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]/items[at0162]/value",
+                "proportionTypes" : [ "integer_fraction", "unitary", "percent", "ratio", "fraction" ],
+                "inputs" : [ {
+                  "suffix" : "numerator",
+                  "type" : "DECIMAL"
+                }, {
+                  "suffix" : "denominator",
+                  "type" : "DECIMAL"
+                } ]
+              }, {
+                "id" : "predominant_staining_intensity",
+                "name" : "Predominant staining intensity",
+                "localizedName" : "Predominant staining intensity",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0163",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Predominant staining intensity"
+                },
+                "localizedDescriptions" : {
+                  "en" : "Predominant intensity of staining."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]/items[at0163]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0164",
+                    "label" : "Low",
+                    "localizedLabels" : {
+                      "en" : "Low"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Predominant intensity of staining is low."
+                    }
+                  }, {
+                    "value" : "at0165",
+                    "label" : "Intermediate",
+                    "localizedLabels" : {
+                      "en" : "Intermediate"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Predominant intensity of staining is intermediate."
+                    }
+                  }, {
+                    "value" : "at0166",
+                    "label" : "High",
+                    "localizedLabels" : {
+                      "en" : "High"
+                    },
+                    "localizedDescriptions" : {
+                      "en" : "Predominant intensity of staining is high."
+                    }
+                  } ]
+                } ]
+              } ]
+            }, {
+              "id" : "human_epidermal_growth_factor_receptor_2_assay_her2",
+              "name" : "Human epidermal growth factor receptor 2 assay (HER2)",
+              "localizedName" : "Human epidermal growth factor receptor 2 assay (HER2)",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0103",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Human epidermal growth factor receptor 2 assay (HER2)"
+              },
+              "localizedDescriptions" : {
+                "en" : "Human Oestrogen receptor 2 (HER2) assay."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]",
+              "children" : [ {
+                "id" : "immunohistochemistry",
+                "name" : "Immunohistochemistry",
+                "localizedName" : "Immunohistochemistry",
+                "rmType" : "CLUSTER",
+                "nodeId" : "at0143",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "Immunohistochemistry"
+                },
+                "localizedDescriptions" : {
+                  "en" : "HER2 Immunohistochemistry result."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0143]",
+                "children" : [ {
+                  "id" : "immunohistochemistry_score",
+                  "name" : "Immunohistochemistry score",
+                  "localizedName" : "Immunohistochemistry score",
+                  "rmType" : "DV_COUNT",
+                  "nodeId" : "at0107",
+                  "min" : 0,
+                  "max" : 1,
+                  "localizedNames" : {
+                    "en" : "Immunohistochemistry score"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "HER2 immunohistochemistry score."
+                  },
+                  "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0143]/items[at0107]/value",
+                  "inputs" : [ {
+                    "type" : "INTEGER",
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0
+                      }
+                    }
+                  } ]
+                }, {
+                  "id" : "immunohistochemistry_result",
+                  "name" : "Immunohistochemistry result",
+                  "localizedName" : "Immunohistochemistry result",
+                  "rmType" : "DV_CODED_TEXT",
+                  "nodeId" : "at0142",
+                  "min" : 0,
+                  "max" : 1,
+                  "localizedNames" : {
+                    "en" : "Immunohistochemistry result"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "HER2 Immunohistochemistry result."
+                  },
+                  "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0143]/items[at0142]/value",
+                  "inputs" : [ {
+                    "suffix" : "code",
+                    "type" : "CODED_TEXT",
+                    "list" : [ {
+                      "value" : "at0146",
+                      "label" : "Positive",
+                      "localizedLabels" : {
+                        "en" : "Positive"
+                      },
+                      "localizedDescriptions" : {
+                        "en" : "The HER2 Immunohistochemistry result is positive."
+                      }
+                    }, {
+                      "value" : "at0147",
+                      "label" : "Negative",
+                      "localizedLabels" : {
+                        "en" : "Negative"
+                      },
+                      "localizedDescriptions" : {
+                        "en" : "The HER2 Immunohistochemistry result is negative."
+                      }
+                    }, {
+                      "value" : "at0148",
+                      "label" : "Equivocal",
+                      "localizedLabels" : {
+                        "en" : "Equivocal"
+                      },
+                      "localizedDescriptions" : {
+                        "en" : "The HER2 Immunohistochemistry result is equivocal."
+                      }
+                    } ]
+                  } ]
+                } ]
+              }, {
+                "id" : "in_situ_hybridisation_ish",
+                "name" : "In situ hybridisation (ISH)",
+                "localizedName" : "In situ hybridisation (ISH)",
+                "rmType" : "CLUSTER",
+                "nodeId" : "at0144",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "en" : "In situ hybridisation (ISH)"
+                },
+                "localizedDescriptions" : {
+                  "en" : "HER2 In situ hybridisation (ISH)."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0144]",
+                "children" : [ {
+                  "id" : "ish_result",
+                  "name" : "ISH result",
+                  "localizedName" : "ISH result",
+                  "rmType" : "DV_CODED_TEXT",
+                  "nodeId" : "at0108",
+                  "min" : 0,
+                  "max" : 1,
+                  "localizedNames" : {
+                    "en" : "ISH result"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "HER2 In situ hybridisation (ISH) result."
+                  },
+                  "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0144]/items[at0108]/value",
+                  "inputs" : [ {
+                    "suffix" : "code",
+                    "type" : "CODED_TEXT",
+                    "list" : [ {
+                      "value" : "at0149",
+                      "label" : "Positive",
+                      "localizedLabels" : {
+                        "en" : "Positive"
+                      },
+                      "localizedDescriptions" : {
+                        "en" : "The HER2 In situ hybridisation (ISH) result is positive."
+                      }
+                    }, {
+                      "value" : "at0150",
+                      "label" : "Negative",
+                      "localizedLabels" : {
+                        "en" : "Negative"
+                      },
+                      "localizedDescriptions" : {
+                        "en" : "The HER2 In situ hybridisation (ISH) result is negative."
+                      }
+                    }, {
+                      "value" : "at0151",
+                      "label" : "Equivocal",
+                      "localizedLabels" : {
+                        "en" : "Equivocal"
+                      },
+                      "localizedDescriptions" : {
+                        "en" : "The HER2 In situ hybridisation (ISH) result is equivocal."
+                      }
+                    } ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "non-neoplastic_cellular_changes",
+            "name" : "Non-neoplastic cellular changes",
+            "localizedName" : "Non-neoplastic cellular changes",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0054",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Non-neoplastic cellular changes"
+            },
+            "localizedDescriptions" : {
+              "en" : "Findings of non-neoplastic cellular changes."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0054]",
+            "children" : [ {
+              "id" : "non-neoplastic_cellular_change",
+              "name" : "Non-neoplastic cellular change",
+              "localizedName" : "Non-neoplastic cellular change",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0023",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "en" : "Non-neoplastic cellular change"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of non-neoplastic cellular change."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0054]/items[at0023]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            } ]
+          }, {
+            "id" : "non-neoplastic_changes",
+            "name" : "Non-neoplastic changes",
+            "localizedName" : "Non-neoplastic changes",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0180",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "en" : "Non-neoplastic changes"
+            },
+            "localizedDescriptions" : {
+              "en" : "Findings of non-neoplastic change."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0180]",
+            "children" : [ {
+              "id" : "non-neoplastic_change",
+              "name" : "Non-neoplastic change",
+              "localizedName" : "Non-neoplastic change",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0181",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "en" : "Non-neoplastic change"
+              },
+              "localizedDescriptions" : {
+                "en" : "Finding of non-neoplastic change."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0180]/items[at0181]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0182",
+                  "label" : "Columnar cell changes",
+                  "localizedLabels" : {
+                    "en" : "Columnar cell changes"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Columnar cell changes are present."
+                  }
+                }, {
+                  "value" : "at0183",
+                  "label" : "Intraductal papilloma",
+                  "localizedLabels" : {
+                    "en" : "Intraductal papilloma"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Intraductal papilloma is present."
+                  }
+                }, {
+                  "value" : "at0184",
+                  "label" : "Radial scars",
+                  "localizedLabels" : {
+                    "en" : "Radial scars"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Radial scars are present."
+                  }
+                }, {
+                  "value" : "at0185",
+                  "label" : "Atypical ductal hyperplasia (ADH)",
+                  "localizedLabels" : {
+                    "en" : "Atypical ductal hyperplasia (ADH)"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Atypical ductal hyperplasia (ADH) is present."
+                  }
+                }, {
+                  "value" : "at0186",
+                  "label" : "Absent",
+                  "localizedLabels" : {
+                    "en" : "Absent"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Non-neoplastic change is absent."
+                  }
+                }, {
+                  "value" : "at0187",
+                  "label" : "Indeterminate",
+                  "localizedLabels" : {
+                    "en" : "Indeterminate"
+                  },
+                  "localizedDescriptions" : {
+                    "en" : "Presence of non-neoplastic changes has not been determined."
+                  }
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "anatomical_pathology_examination",
+          "name" : "Anatomical pathology examination",
+          "localizedName" : "Anatomical pathology examination",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Anatomical pathology examination"
+          },
+          "localizedDescriptions" : {
+            "en" : "Findings and interpretation of an anatomical pathology examination performed on tissues and body fluids."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0]",
+          "children" : [ {
+            "id" : "anatomical_pathology_finding",
+            "name" : "Anatomical pathology finding",
+            "localizedName" : "Anatomical pathology finding",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0005",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "en" : "Anatomical pathology finding"
+            },
+            "localizedDescriptions" : {
+              "en" : "Details of an individual anatomical pathology finding, often related to a specific anatomical location or specimen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0]/items[at0005]",
+            "children" : [ {
+              "id" : "finding_label",
+              "name" : "Finding label",
+              "localizedName" : "Finding label",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0023",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "en" : "Finding label"
+              },
+              "localizedDescriptions" : {
+                "en" : "A text label for the specific finding."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0]/items[at0005]/items[at0023]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "82711006",
+                  "label" : "Infiltrating duct carcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                }, {
+                  "value" : "89740008",
+                  "label" : "Lobular carcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                }, {
+                  "value" : "4631006",
+                  "label" : "Tubular adenocarcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                }, {
+                  "value" : "72495009",
+                  "label" : "Mucinous adenocarcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "en" : ""
+                  }
+                } ],
+                "terminology" : "http://snomed.info/id/"
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "time",
+          "name" : "Time",
+          "rmType" : "DV_DATE_TIME",
+          "min" : 1,
+          "max" : 1,
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/data[at0001]/events[at0002]/time",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ],
+          "inContext" : true
+        } ]
+      }, {
+        "id" : "language",
+        "name" : "Language",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/language",
+        "inContext" : true
+      }, {
+        "id" : "encoding",
+        "name" : "Encoding",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/encoding",
+        "inContext" : true
+      }, {
+        "id" : "subject",
+        "name" : "Subject",
+        "rmType" : "PARTY_PROXY",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Microscopic breast tissue analysis test result']/subject",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_scheme",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_namespace",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "name",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "category",
+      "rmType" : "DV_CODED_TEXT",
+      "nodeId" : "",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/category",
+      "inputs" : [ {
+        "suffix" : "code",
+        "type" : "CODED_TEXT",
+        "list" : [ {
+          "value" : "433",
+          "label" : "event",
+          "localizedLabels" : {
+            "en" : "event"
+          }
+        } ],
+        "terminology" : "openehr"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}
