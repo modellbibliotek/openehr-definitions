@@ -1,0 +1,3226 @@
+{
+  "templateId" : "breast_pathology_result_report_inlined.v1",
+  "semVer" : "1.1.7",
+  "version" : "2.3",
+  "defaultLanguage" : "sv",
+  "languages" : [ "sv" ],
+  "tree" : {
+    "id" : "breast_pathology_result_report_inlined.v1",
+    "name" : "breast_pathology_result_report_inlined.v1",
+    "localizedName" : "breast_pathology_result_report_inlined.v1",
+    "rmType" : "COMPOSITION",
+    "nodeId" : "openEHR-EHR-COMPOSITION.report.v1",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "sv" : "breast_pathology_result_report_inlined.v1"
+    },
+    "localizedDescriptions" : {
+      "sv" : "Dokument för att förmedla information till andra, vanligen som svar på en begäran från en annan part."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "context",
+      "rmType" : "EVENT_CONTEXT",
+      "nodeId" : "",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/context",
+      "children" : [ {
+        "id" : "rapport-id",
+        "name" : "Rapport-id",
+        "localizedName" : "Rapport-id",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0002",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "sv" : "Rapport-id"
+        },
+        "localizedDescriptions" : {
+          "sv" : "Information som identifierar rapporten.\r\n"
+        },
+        "aqlPath" : "/context/other_context[at0001]/items[at0002]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "status",
+        "name" : "Status",
+        "localizedName" : "Status",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0005",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "sv" : "Status"
+        },
+        "localizedDescriptions" : {
+          "sv" : "Status för hela rapporten. Observera att detta inte är status för någon av rapportkomponenterna."
+        },
+        "aqlPath" : "/context/other_context[at0001]/items[at0005]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "makroskopisk_analys_av_bröstvävnad",
+      "name" : "Makroskopisk analys av bröstvävnad",
+      "localizedName" : "Makroskopisk analys av bröstvävnad",
+      "rmType" : "OBSERVATION",
+      "nodeId" : "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "sv" : "Makroskopisk analys av bröstvävnad"
+      },
+      "localizedDescriptions" : {
+        "sv" : "Resultatet, inklusive fynd och laboratoriets tolkning, av en undersökning utförd på provmaterial från en individ eller relaterad till individen."
+      },
+      "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']",
+      "children" : [ {
+        "id" : "ospecificerad_händelse",
+        "name" : "Ospecificerad händelse",
+        "localizedName" : "Ospecificerad händelse",
+        "rmType" : "EVENT",
+        "nodeId" : "at0002",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "sv" : "Ospecificerad händelse"
+        },
+        "localizedDescriptions" : {
+          "sv" : "Ospecificerad standardhändelse vid en tidpunkt eller inom ett tidsintervall som explicit kan definieras i en mall eller genereras automatiskt av vissa IT-system."
+        },
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]",
+        "children" : [ {
+          "id" : "namn_på_laboratorieundersökning",
+          "name" : "Namn på laboratorieundersökning",
+          "localizedName" : "Namn på laboratorieundersökning",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0005",
+          "min" : 1,
+          "max" : 1,
+          "localizedNames" : {
+            "sv" : "Namn på laboratorieundersökning"
+          },
+          "localizedDescriptions" : {
+            "sv" : "Namnet på laboratorieundersökningen som utförts på provmaterialet."
+          },
+          "annotations" : {
+            "comment" : "Undersökningsnamnet kan täcka ett enda resultat eller en grupp resultat. Undersökningsnamnet kan kodas med medicinska kodningssystem som LOINC, SNOMED CT eller lokala laboratoriekodningssystem. Exempel kan vara \"Glukos\", \"Mätning av urea och elektrolyter\", \"Blodgas\", \"'Kalium i svett'\", \"Kortisol (morgon)\" eller \"histopatologi malignt melanom\". Namnet kan ibland innehålla typen av provmaterial och patientstatus, såsom \"fastande blodglukos\" eller innehålla annan information, såsom \"Kalium (PNA-blodgas)\"."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+          "inputs" : [ {
+            "type" : "TEXT",
+            "defaultValue" : "Makroskopisk analys av bröstvävnad"
+          } ]
+        }, {
+          "id" : "makroskopisk_information_om_provmaterial",
+          "name" : "Makroskopisk information om Provmaterial",
+          "localizedName" : "Makroskopisk information om Provmaterial",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.specimen.v1",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "sv" : "Makroskopisk information om Provmaterial"
+          },
+          "localizedDescriptions" : {
+            "sv" : "Ett fysiskt prov taget från, eller relaterat till, en individ i syfte att utföra en bedömning, undersökning eller analys."
+          },
+          "annotations" : {
+            "comment" : "Exempelvis vävnad eller kroppsvätska."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']",
+          "children" : [ {
+            "id" : "vävnadsprovtyper",
+            "name" : "Vävnadsprovtyper",
+            "localizedName" : "Vävnadsprovtyper",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0029",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Vävnadsprovtyper"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Typ av prov"
+            },
+            "annotations" : {
+              "comment" : "Exempelvis venöst blod, bakteriekultur, cytologi eller vävnadsprov. Kodning av provtypen till en terminologi är att föredra i de fall det är möjligt."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[at0029,'Vävnadsprovtyper']/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "1163303005",
+                "label" : "Sentinel lymph node (portvaktslymfknuta)",
+                "localizedLabels" : {
+                  "sv" : ""
+                }
+              }, {
+                "value" : "38000004",
+                "label" : "Lymfa",
+                "localizedLabels" : {
+                  "sv" : ""
+                }
+              }, {
+                "value" : "76752008",
+                "label" : "Bröstvävnad",
+                "localizedLabels" : {
+                  "sv" : ""
+                }
+              } ],
+              "terminology" : "http://snomed.info/id/"
+            } ]
+          }, {
+            "id" : "antal_fragment",
+            "name" : "Antal fragment",
+            "localizedName" : "Antal fragment",
+            "rmType" : "DV_COUNT",
+            "nodeId" : "at0099",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Antal fragment"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Antalet vävnadsfragment som ingår i provet."
+            },
+            "annotations" : {
+              "comment" : "Vanligtvis endast relevant när ett antal vävnadsfragment undersöks tillsammans och rapporteras gemensamt som ett enda prov."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[at0099]/value",
+            "inputs" : [ {
+              "type" : "INTEGER"
+            } ]
+          }, {
+            "id" : "provmaterialsmätningar",
+            "name" : "Provmaterialsmätningar",
+            "localizedName" : "Provmaterialsmätningar",
+            "rmType" : "CLUSTER",
+            "nodeId" : "openEHR-EHR-CLUSTER.specimen_measurements.v1",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Provmaterialsmätningar"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Måtten på ett prov (provmaterial)"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.specimen_measurements.v1,'Provmaterialsmätningar']",
+            "children" : [ {
+              "id" : "längd",
+              "name" : "Längd",
+              "localizedName" : "Längd",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0042",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "sv" : "Längd"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Den uppmätta längden av den längsta delen av ett prov (t.ex. längsta kanten av ett rektangulärt prov) eller den uppmätta längden av ett prov längs dess längsgående axel (t.ex. 2 cm av tarmen, mätt längs tarmens axel, och även om den uppmätta längden är kortare än själva tarmens diameter)."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.specimen_measurements.v1,'Provmaterialsmätningar']/items[at0042,'Längd']/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "cm",
+                  "label" : "cm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "mm",
+                  "label" : "mm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "mm"
+              } ]
+            }, {
+              "id" : "bredd",
+              "name" : "Bredd",
+              "localizedName" : "Bredd",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0042",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "sv" : "Bredd"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Den uppmätta bredden av ett prov, vanligtvis vinkelrätt mot längden (eller längden av sida nummer två, om två sidor mäts)"
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.specimen_measurements.v1,'Provmaterialsmätningar']/items[at0042,'Bredd']/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "cm",
+                  "label" : "cm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "mm",
+                  "label" : "mm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "mm"
+              } ]
+            }, {
+              "id" : "tjocklek_djup",
+              "name" : "Tjocklek (djup)",
+              "localizedName" : "Tjocklek (djup)",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0042",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "sv" : "Tjocklek (djup)"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Den uppmätta längden av den tredje ledden av ett prov, vanligtvis vinkelrät mot längden och bredden, eller mätningen av den vertikala aspekten av ett prov från ytan till basen. Kallas ibland djup och ibland tjocklek."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.specimen_measurements.v1,'Provmaterialsmätningar']/items[at0042,'Tjocklek (djup)']/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "cm",
+                  "label" : "cm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "mm",
+                  "label" : "mm",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "mm"
+              } ]
+            }, {
+              "id" : "vikt",
+              "name" : "Vikt",
+              "localizedName" : "Vikt",
+              "rmType" : "DV_QUANTITY",
+              "nodeId" : "at0020",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Vikt"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Det uppmätta värdet på provets massa."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.specimen_measurements.v1,'Provmaterialsmätningar']/items[at0020]/value",
+              "inputs" : [ {
+                "suffix" : "magnitude",
+                "type" : "DECIMAL",
+                "defaultValue" : 0.0
+              }, {
+                "suffix" : "unit",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "g",
+                  "label" : "g",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                }, {
+                  "value" : "kg",
+                  "label" : "kg",
+                  "validation" : {
+                    "range" : {
+                      "minOp" : ">=",
+                      "min" : 0.0
+                    }
+                  }
+                } ],
+                "defaultValue" : "g"
+              } ],
+              "termBindings" : {
+                "SNOMED-CT" : {
+                  "value" : "[SNOMED-CT(2021)::371506001]",
+                  "terminologyId" : "SNOMED-CT"
+                }
+              }
+            } ]
+          }, {
+            "id" : "provtagningsmetoder",
+            "name" : "Provtagningsmetoder",
+            "localizedName" : "Provtagningsmetoder",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0007",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Provtagningsmetoder"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Den metod som används för att ta provet."
+            },
+            "annotations" : {
+              "comment" : "Exempelvis venpunktion, biopsi eller resektion. Kodning av provtagningsmetod till en terminologi är att föredra i de fall det är möjligt. Om provtagningsmetoden inkluderas i \"Provtyp\" via prekoordinerade koder blir detta dataelement redundant. \r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[at0007,'Provtagningsmetoder']/value",
+            "inputs" : [ {
+              "type" : "TEXT",
+              "list" : [ {
+                "value" : "Mastektomi",
+                "label" : "Mastektomi"
+              }, {
+                "value" : "Resektion/partiell mastektomi",
+                "label" : "Resektion/partiell mastektomi"
+              } ],
+              "listOpen" : false
+            } ]
+          }, {
+            "id" : "anatomisk_lokalisation",
+            "name" : "Anatomisk lokalisation",
+            "localizedName" : "Anatomisk lokalisation",
+            "rmType" : "CLUSTER",
+            "nodeId" : "openEHR-EHR-CLUSTER.anatomical_location.v1",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Anatomisk lokalisation"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Ett fysiskt ställe på eller i människokroppen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]",
+            "children" : [ {
+              "id" : "namn_på_kroppsställe",
+              "name" : "Namn på kroppsställe",
+              "localizedName" : "Namn på kroppsställe",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0001",
+              "min" : 1,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Namn på kroppsställe"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Identifiering av enskilt fysiskt ställe på eller i människokroppen."
+              },
+              "annotations" : {
+                "comment" : "Det här är det enda obligatoriska fältet i denna arketyp och det ska användas som det primära stället att registrera en anatomisk lokalisation med ett vedertaget namn. Det rekommenderas starkt att \"Namn på kroppsställe\" anges så specifikt som det är anatomiskt möjligt. Till exempel; registrera \"övre ögonlock\" snarare än \"ögonlock\" med \"övre\" som kvalificering; \"femte revbenet\" snarare än \"revben\" med en numerisk kvalificering. Använd de andra dataelementen för lateralitet, aspekt, region och anatomisk linje för att ge mer information.\r\n\r\nDetta dataelement bör kodas med en terminologi som kan starta beslutsstödsfunktionalitet när så är möjligt - en lämplig terminologi för användning här kan innehålla enskilda begrepp eller listor med förkoordinerade termer. Fritext bör endast användas om det inte finns någon lämplig terminologi.\r\n\r\nOm kroppsställets namn anges i den överordnade arketypen kan detta dataelement vara överflödigt. Emellertid har användningsfall identifierats där datavärdet kan kopieras till detta element för att stödja semantiska utsökningsfrågor baserat på denna arketyp snarare än den överordnade arketypen.\r\n\r\n\r\n"
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0001]/value",
+              "inputs" : [ {
+                "type" : "TEXT",
+                "defaultValue" : "Bröst"
+              } ]
+            }, {
+              "id" : "lateralitet",
+              "name" : "Lateralitet",
+              "localizedName" : "Lateralitet",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0002",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Lateralitet"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Den sida av kroppen där det identifierade kroppsstället är lokaliserat."
+              },
+              "annotations" : {
+                "comment" : "Om det identifierade kroppsstället saknar lateralitet ska detta fält inte användas. \r\nOm fältet \"Namn på kroppsställe\" har prekoordinerade termer som innefattar lateralitet är detta fält redundant."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0002]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0003",
+                  "label" : "Vänster",
+                  "localizedLabels" : {
+                    "sv" : "Vänster"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Kroppens vänstra sida."
+                  },
+                  "termBindings" : {
+                    "SNOMED-CT" : {
+                      "value" : "[SNOMED-CT::7771000]",
+                      "terminologyId" : "SNOMED-CT"
+                    }
+                  }
+                }, {
+                  "value" : "at0004",
+                  "label" : "Höger",
+                  "localizedLabels" : {
+                    "sv" : "Höger"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Kroppens högra sida."
+                  },
+                  "termBindings" : {
+                    "SNOMED-CT" : {
+                      "value" : "[SNOMED-CT::24028007]",
+                      "terminologyId" : "SNOMED-CT"
+                    }
+                  }
+                } ]
+              } ],
+              "termBindings" : {
+                "SNOMED-CT" : {
+                  "value" : "[SNOMED-CT::272741003]",
+                  "terminologyId" : "SNOMED-CT"
+                }
+              }
+            }, {
+              "id" : "cirkulär_anatomisk_lokalisation",
+              "name" : "Cirkulär anatomisk lokalisation",
+              "localizedName" : "Cirkulär anatomisk lokalisation",
+              "rmType" : "CLUSTER",
+              "nodeId" : "openEHR-EHR-CLUSTER.anatomical_location_circle.v1",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Cirkulär anatomisk lokalisation"
+              },
+              "localizedDescriptions" : {
+                "sv" : "En fysisk plats på eller inom människokroppen som beskrivs i termer av riktningen och eventuellt avståndet till platsen från ett centralt landmärke.\r\n\r\n"
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]",
+              "children" : [ {
+                "id" : "referensriktning",
+                "name" : "Referensriktning",
+                "localizedName" : "Referensriktning",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0065",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Referensriktning"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "En enda riktning som representerar klockan 12 eller 0° på en imaginär cirkel placerad över en plats på kroppen, som observerats av den person som utför undersökningen.\r\n"
+                },
+                "annotations" : {
+                  "comment" : "Till exempel: referensaxeln är vanligtvis mot huvudet när man undersöker ett bröst eller en detalj av en hudskada, mot perineum när man undersöker anus i litotomiläge eller mot den främre övre extremitetslinjen när man undersöker humerus.\r\n"
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0065]/value",
+                "inputs" : [ {
+                  "type" : "TEXT",
+                  "defaultValue" : "Kranialt = kl 12"
+                } ]
+              }, {
+                "id" : "mittpunkt",
+                "name" : "Mittpunkt",
+                "localizedName" : "Mittpunkt",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0079",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Mittpunkt"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Identifierat kroppsställe som används som mittpunkt för den imaginära cirkeln."
+                },
+                "annotations" : {
+                  "comment" : "Till exempel: bröstvårtan när man undersöker ett bröst, eller anus vid undersökning av hemorrojder."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0079]/value",
+                "inputs" : [ {
+                  "type" : "TEXT",
+                  "defaultValue" : "mamill"
+                } ]
+              }, {
+                "id" : "cirkulär_riktning",
+                "name" : "Cirkulär riktning",
+                "localizedName" : "Cirkulär riktning",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0061",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Cirkulär riktning"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Riktningens vinkel mot det fysiska stället i förhållande till referensriktningen, antingen som positionen för en timme på en urtavla eller som ett antal grader.\r\n"
+                },
+                "annotations" : {
+                  "comment" : "Till exempel: lokalisering av hemorrojder i analkanalen beskrivs ofta som klockan 3, 7 och 11. I detta exempel är perineum klockan tolv när patienten är i litotomiläge och betraktas som referensriktningen. För grader är positiva värden medsols, medan negativa värden är moturs.\r\n"
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0061]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0067",
+                    "label" : "Klockan ett",
+                    "localizedLabels" : {
+                      "sv" : "Klockan ett"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället är beläget klockan ett i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0068",
+                    "label" : "Klockan två",
+                    "localizedLabels" : {
+                      "sv" : "Klockan två"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan två i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0069",
+                    "label" : "Klockan tre",
+                    "localizedLabels" : {
+                      "sv" : "Klockan tre"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan tre i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0070",
+                    "label" : "Klockan fyra",
+                    "localizedLabels" : {
+                      "sv" : "Klockan fyra"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan fyra i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0071",
+                    "label" : "Klockan fem",
+                    "localizedLabels" : {
+                      "sv" : "Klockan fem"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan fem i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0072",
+                    "label" : "Klockan sex",
+                    "localizedLabels" : {
+                      "sv" : "Klockan sex"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan sex i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0073",
+                    "label" : "Klockan sju",
+                    "localizedLabels" : {
+                      "sv" : "Klockan sju"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan sju i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0074",
+                    "label" : "Klockan åtta",
+                    "localizedLabels" : {
+                      "sv" : "Klockan åtta"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan åtta i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0075",
+                    "label" : "Klockan nio",
+                    "localizedLabels" : {
+                      "sv" : "Klockan nio"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan nio i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0076",
+                    "label" : "Klockan tio",
+                    "localizedLabels" : {
+                      "sv" : "Klockan tio"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan tio i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0077",
+                    "label" : "Klockan elva",
+                    "localizedLabels" : {
+                      "sv" : "Klockan elva"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan elva i förhållande till den identifierade referenspunkten."
+                    }
+                  }, {
+                    "value" : "at0078",
+                    "label" : "Klockan tolv",
+                    "localizedLabels" : {
+                      "sv" : "Klockan tolv"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kroppsstället ligger vid klockan tolv i förhållande till den identifierade referenspunkten."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "avstånd_från_mittpunkten",
+                "name" : "Avstånd från mittpunkten",
+                "localizedName" : "Avstånd från mittpunkten",
+                "rmType" : "DV_QUANTITY",
+                "nodeId" : "at0080",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Avstånd från mittpunkten"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Avstånd till platsen från den identifierade mittpunkten."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0080]/value",
+                "inputs" : [ {
+                  "suffix" : "magnitude",
+                  "type" : "DECIMAL"
+                }, {
+                  "suffix" : "unit",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "cm",
+                    "label" : "cm",
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0.0
+                      },
+                      "precision" : {
+                        "minOp" : ">=",
+                        "min" : 1,
+                        "maxOp" : "<=",
+                        "max" : 1
+                      }
+                    }
+                  }, {
+                    "value" : "[in_i]",
+                    "label" : "[in_i]",
+                    "localizedLabels" : {
+                      "sv" : "in"
+                    },
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0.0
+                      },
+                      "precision" : {
+                        "minOp" : ">=",
+                        "min" : 1,
+                        "maxOp" : "<=",
+                        "max" : 1
+                      }
+                    }
+                  }, {
+                    "value" : "mm",
+                    "label" : "mm",
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0.0
+                      },
+                      "precision" : {
+                        "minOp" : ">=",
+                        "min" : 1,
+                        "maxOp" : "<=",
+                        "max" : 1
+                      }
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "beskrivning",
+                "name" : "Beskrivning",
+                "localizedName" : "Beskrivning",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0023",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Beskrivning"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Fritextbeskrivning som kan användas för att ytterligare specificera detaljer om det cirkulära stället."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[openEHR-EHR-CLUSTER.anatomical_location_circle.v1]/items[at0023]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "ursprungsprovets_identifierare",
+            "name" : "Ursprungsprovets identifierare",
+            "localizedName" : "Ursprungsprovets identifierare",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0003",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "Ursprungsprovets identifierare"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Unik identifierare för ursprungsprovet, där provet delats upp i delprover."
+            },
+            "annotations" : {
+              "comment" : "Till exempel: Ett specifikt objektglas för histologi kan ha ett specifikt paraffinvaxblock som sitt ursprungsprov.\r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[at0003]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "provkvalitetsproblem",
+            "name" : "Provkvalitetsproblem",
+            "localizedName" : "Provkvalitetsproblem",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0042",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "Provkvalitetsproblem"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Ett specifikt kvalitetsproblem med provmaterialet."
+            },
+            "annotations" : {
+              "comment" : "Kodning av kvalitetsproblem till en terminologi är att föredra i de fall det är möjligt."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[at0042]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0054",
+                "label" : "Felaktigt additiv",
+                "localizedLabels" : {
+                  "sv" : "Felaktigt additiv"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet har tillsatts ett felaktigt additiv såsom ett transportmedium eller konserveringsmedel."
+                }
+              }, {
+                "value" : "at0055",
+                "label" : "Otillräcklig mängd",
+                "localizedLabels" : {
+                  "sv" : "Otillräcklig mängd"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Den tillgängliga mängden provmaterial var otillräcklig för att genomföra undersökningen."
+                }
+              }, {
+                "value" : "at0090",
+                "label" : "Hanteringsfel",
+                "localizedLabels" : {
+                  "sv" : "Hanteringsfel"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Ett fel inträffade vid hantering av provet. Till exempel: Felaktig lagring eller trasig behållare."
+                }
+              }, {
+                "value" : "at0095",
+                "label" : "Felaktig märkning",
+                "localizedLabels" : {
+                  "sv" : "Felaktig märkning"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet var felaktigt märkt."
+                }
+              }, {
+                "value" : "at0092",
+                "label" : "Tekniskt fel",
+                "localizedLabels" : {
+                  "sv" : "Tekniskt fel"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provmaterialet kunde inte analyseras på grund av tekniska skäl."
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "analysbarhet",
+            "name" : "Analysbarhet",
+            "localizedName" : "Analysbarhet",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0041",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Analysbarhet"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Information om huruvida provmaterialet var av tillräcklig kvalitet för analys."
+            },
+            "annotations" : {
+              "comment" : "Detta element är avsett för att registrera ett beslut om huruvida provmaterialet var tillräckligt bra för analys och om analysen har genomförts. Kodning av analysbarheten till en terminologi är att föredra där det är möjligt."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Makroskopisk information om Provmaterial']/items[at0041]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0062",
+                "label" : "Tillfredställande",
+                "localizedLabels" : {
+                  "sv" : "Tillfredställande"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet är av tillfredsställande kvalitet."
+                }
+              }, {
+                "value" : "at0063",
+                "label" : "Otillfredsställande - behandlat",
+                "localizedLabels" : {
+                  "sv" : "Otillfredsställande - behandlat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet är av otillfredsställande kvalitet men har analyserats."
+                }
+              }, {
+                "value" : "at0064",
+                "label" : "Otillfredsställande - ej behandlat",
+                "localizedLabels" : {
+                  "sv" : "Otillfredsställande - ej behandlat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet är av otillfredsställande kvalitet och har inte analyserats."
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "time",
+          "name" : "Time",
+          "rmType" : "DV_DATE_TIME",
+          "min" : 1,
+          "max" : 1,
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/time",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ],
+          "inContext" : true
+        } ]
+      }, {
+        "id" : "language",
+        "name" : "Language",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/language",
+        "inContext" : true
+      }, {
+        "id" : "encoding",
+        "name" : "Encoding",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/encoding",
+        "inContext" : true
+      }, {
+        "id" : "subject",
+        "name" : "Subject",
+        "rmType" : "PARTY_PROXY",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Makroskopisk analys av bröstvävnad']/subject",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_scheme",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_namespace",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "name",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "mikroskopisk_analys_av_bröstvävnad",
+      "name" : "Mikroskopisk analys av bröstvävnad",
+      "localizedName" : "Mikroskopisk analys av bröstvävnad",
+      "rmType" : "OBSERVATION",
+      "nodeId" : "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "sv" : "Mikroskopisk analys av bröstvävnad"
+      },
+      "localizedDescriptions" : {
+        "sv" : "Resultatet, inklusive fynd och laboratoriets tolkning, av en undersökning utförd på provmaterial från en individ eller relaterad till individen."
+      },
+      "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']",
+      "children" : [ {
+        "id" : "ospecificerad_händelse",
+        "name" : "Ospecificerad händelse",
+        "localizedName" : "Ospecificerad händelse",
+        "rmType" : "EVENT",
+        "nodeId" : "at0002",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "sv" : "Ospecificerad händelse"
+        },
+        "localizedDescriptions" : {
+          "sv" : "Ospecificerad standardhändelse vid en tidpunkt eller inom ett tidsintervall som explicit kan definieras i en mall eller genereras automatiskt av vissa IT-system."
+        },
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]",
+        "children" : [ {
+          "id" : "namn_på_laboratorieundersökning",
+          "name" : "Namn på laboratorieundersökning",
+          "localizedName" : "Namn på laboratorieundersökning",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0005",
+          "min" : 1,
+          "max" : 1,
+          "localizedNames" : {
+            "sv" : "Namn på laboratorieundersökning"
+          },
+          "localizedDescriptions" : {
+            "sv" : "Namnet på laboratorieundersökningen som utförts på provmaterialet."
+          },
+          "annotations" : {
+            "comment" : "Undersökningsnamnet kan täcka ett enda resultat eller en grupp resultat. Undersökningsnamnet kan kodas med medicinska kodningssystem som LOINC, SNOMED CT eller lokala laboratoriekodningssystem. Exempel kan vara \"Glukos\", \"Mätning av urea och elektrolyter\", \"Blodgas\", \"'Kalium i svett'\", \"Kortisol (morgon)\" eller \"histopatologi malignt melanom\". Namnet kan ibland innehålla typen av provmaterial och patientstatus, såsom \"fastande blodglukos\" eller innehålla annan information, såsom \"Kalium (PNA-blodgas)\"."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+          "inputs" : [ {
+            "type" : "TEXT",
+            "defaultValue" : "Mikroskopisk analys av bröstvävnad"
+          } ]
+        }, {
+          "id" : "provmaterial",
+          "name" : "Provmaterial",
+          "localizedName" : "Provmaterial",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.specimen.v1",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "sv" : "Provmaterial"
+          },
+          "localizedDescriptions" : {
+            "sv" : "Ett fysiskt prov/provmaterial taget från, eller relaterat till, en individ i syfte att utföra en bedömning, undersökning eller analys."
+          },
+          "annotations" : {
+            "comment" : "Exempelvis vävnad eller kroppsvätska."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]",
+          "children" : [ {
+            "id" : "provtyp",
+            "name" : "Provtyp",
+            "localizedName" : "Provtyp",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0029",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Provtyp"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Typ av prov"
+            },
+            "annotations" : {
+              "comment" : "Exempelvis venöst blod, bakteriekultur, cytologi eller vävnadsprov. Kodning av provtypen till en terminologi är att föredra i de fall det är möjligt."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0029]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "antal_fragment",
+            "name" : "Antal fragment",
+            "localizedName" : "Antal fragment",
+            "rmType" : "DV_COUNT",
+            "nodeId" : "at0099",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Antal fragment"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Antalet vävnadsfragment som ingår i provet."
+            },
+            "annotations" : {
+              "comment" : "Vanligtvis endast relevant när ett antal vävnadsfragment undersöks tillsammans och rapporteras gemensamt som ett enda prov."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0099]/value",
+            "inputs" : [ {
+              "type" : "INTEGER"
+            } ]
+          }, {
+            "id" : "laboritoriets_providentifierare",
+            "name" : "Laboritoriets providentifierare",
+            "localizedName" : "Laboritoriets providentifierare",
+            "rmType" : "DV_IDENTIFIER",
+            "nodeId" : "at0001",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Laboritoriets providentifierare"
+            },
+            "localizedDescriptions" : {
+              "sv" : "En unik providentifierare, vanligen angiven av laboratoriet."
+            },
+            "annotations" : {
+              "comment" : "Syftet är identifiering av ett prov i laboratorieinformationssystemet. Provbehållare såsom exempelvis vakuumflaskor och vävnadskassetter har sina egna ID-nummer vilka kan anges i \"Container-elementet\" i arketyper Specimen Container.\r\n\r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0001]/value",
+            "inputs" : [ {
+              "suffix" : "id",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "type",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "issuer",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "assigner",
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "extern_identifierare",
+            "name" : "Extern identifierare",
+            "localizedName" : "Extern identifierare",
+            "rmType" : "DV_IDENTIFIER",
+            "nodeId" : "at0088",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "Extern identifierare"
+            },
+            "localizedDescriptions" : {
+              "sv" : "En unik providentifierare som anges av en extern part utanför laboratoriet."
+            },
+            "annotations" : {
+              "comment" : "Exempelvis remiss-ID, beställnings-ID, arkiverings-ID, Biobank-ID."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0088]/value",
+            "inputs" : [ {
+              "suffix" : "id",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "type",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "issuer",
+              "type" : "TEXT"
+            }, {
+              "suffix" : "assigner",
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "datum_tid_ankomst_till_labb",
+            "name" : "Datum/tid ankomst till labb",
+            "localizedName" : "Datum/tid ankomst till labb",
+            "rmType" : "DV_DATE_TIME",
+            "nodeId" : "at0034",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Datum/tid ankomst till labb"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Datum och tid när provet togs emot av laboratoriet."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0034]/value",
+            "inputs" : [ {
+              "type" : "DATETIME"
+            } ]
+          }, {
+            "id" : "provtagningskontext",
+            "name" : "Provtagningskontext",
+            "localizedName" : "Provtagningskontext",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0008",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "Provtagningskontext"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Den kontext i vilken provet togs."
+            },
+            "annotations" : {
+              "comment" : "Exempel: fastande, full urinblåsa, sterilt fält. Alternativt specialinstruktioner avseende hanteringen av provet eller omedelbar beredning av provet såsom \"centrifugera vid mottagande\". Det här dataelementet kan även användas för att dokumentera olika typer av kända avvikelser vid provtagning eller hanteringsinstruktioner såsom exempelvis att patienten inte hade fastat trots att det uttryckligen hade begärts. Kodning av provtagningskontexten till en terminologi är att föredra i de fall det är möjligt. \r\n\r\nOm den här arketypen används i en annan arketyp av typen INSTRUCTION kommer kontexten att återspegla de avsedda eller önskade förhållandena under provtagningen.\r\n\r\nOm den arketypen används för att representera ett steg i en arketyp av typen ACTION som härrör till att provtagningen utförs eller slutförs kommer kontexten att återspegla de förhållanden som fanns vid provtagningen och detta kan även kopieras till elementet \"Möjliga felkällor\" i arketypen OBSERVATION.laboratory_test_result archetype.\r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0008]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "provtagningsmetod",
+            "name" : "Provtagningsmetod",
+            "localizedName" : "Provtagningsmetod",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0007",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Provtagningsmetod"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Den metod som används för att ta provet."
+            },
+            "annotations" : {
+              "comment" : "Exempelvis venpunktion, biopsi eller resektion. Kodning av provtagningsmetod till en terminologi är att föredra i de fall det är möjligt. Om provtagningsmetoden inkluderas i \"Provtyp\" via prekoordinerade koder blir detta dataelement redundant. \r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0007]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "beskrivning_av_provtagning",
+            "name" : "Beskrivning av provtagning",
+            "localizedName" : "Beskrivning av provtagning",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0079",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Beskrivning av provtagning"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Fritextbeskrivning av provtagningen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0079]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "provkälla",
+            "name" : "Provkälla",
+            "localizedName" : "Provkälla",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0087",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Provkälla"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Identifiering av var på kroppen eller annat ställe som provet är taget från.\r\n"
+            },
+            "annotations" : {
+              "comment" : "Exempelvis \"sår på vänster underben\", \"venkateter på höger arm\", \"höger njure\". Kodning av provkälla till en terminologi är att föredra i de fall det är möjligt.\r\n\r\nAnvänd detta dataelement för att ange prekoordinerade provkällor. Om behoven för registrering av den anatomiska platsen bestäms i applikationen eller kräver komplex modellering såsom relativa platser, använd SLOT \"Strukturerad anatomisk lokalisation\" i denna arketyp. Om den anatomiska platsen ingår i \"Provtyp\" via förkoordinerade koder blir detta dataelement överflödigt.\r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0087]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "anatomisk_lokalisation",
+            "name" : "Anatomisk lokalisation",
+            "localizedName" : "Anatomisk lokalisation",
+            "rmType" : "CLUSTER",
+            "nodeId" : "openEHR-EHR-CLUSTER.anatomical_location.v1",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Anatomisk lokalisation"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Ett fysiskt ställe på eller i människokroppen."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]",
+            "children" : [ {
+              "id" : "namn_på_kroppsställe",
+              "name" : "Namn på kroppsställe",
+              "localizedName" : "Namn på kroppsställe",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0001",
+              "min" : 1,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Namn på kroppsställe"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Identifiering av enskilt fysiskt ställe på eller i människokroppen."
+              },
+              "annotations" : {
+                "comment" : "Det här är det enda obligatoriska fältet i denna arketyp och det ska användas som det primära stället att registrera en anatomisk lokalisation med ett vedertaget namn. Det rekommenderas starkt att \"Namn på kroppsställe\" anges så specifikt som det är anatomiskt möjligt. Till exempel; registrera \"övre ögonlock\" snarare än \"ögonlock\" med \"övre\" som kvalificering; \"femte revbenet\" snarare än \"revben\" med en numerisk kvalificering. Använd de andra dataelementen för lateralitet, aspekt, region och anatomisk linje för att ge mer information.\r\n\r\nDetta dataelement bör kodas med en terminologi som kan starta beslutsstödsfunktionalitet när så är möjligt - en lämplig terminologi för användning här kan innehålla enskilda begrepp eller listor med förkoordinerade termer. Fritext bör endast användas om det inte finns någon lämplig terminologi.\r\n\r\nOm kroppsställets namn anges i den överordnade arketypen kan detta dataelement vara överflödigt. Emellertid har användningsfall identifierats där datavärdet kan kopieras till detta element för att stödja semantiska utsökningsfrågor baserat på denna arketyp snarare än den överordnade arketypen.\r\n\r\n\r\n"
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0001]/value",
+              "inputs" : [ {
+                "type" : "TEXT",
+                "defaultValue" : "Bröst"
+              } ]
+            }, {
+              "id" : "specifikt_ställe",
+              "name" : "Specifikt ställe",
+              "localizedName" : "Specifikt ställe",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0065",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Specifikt ställe"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Ytterligare detalj angiven som ett specifikt område eller en punkt på eller i det identifierade kroppsstället."
+              },
+              "annotations" : {
+                "comment" : "Används för att öka precisionen i identifieringen av kroppsstället. Till exempel McBurneys punkt på bukväggen. Om dataelementet 'Kroppsställets namn' använder förkoordinerade termer som inkluderar det specifika kroppsstället är detta dataelement överflödigt."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[openEHR-EHR-CLUSTER.anatomical_location.v1]/items[at0065]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "77831004",
+                  "label" : "Övre inre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                }, {
+                  "value" : "19100000",
+                  "label" : "Nedre inre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                }, {
+                  "value" : "76365002",
+                  "label" : "Övre yttre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                }, {
+                  "value" : "3564002",
+                  "label" : "Nedre yttre kvadrant av bröst, struktur",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                } ],
+                "terminology" : "http://snomed.info/id/"
+              } ]
+            } ]
+          }, {
+            "id" : "ursprungsprovets_identifierare",
+            "name" : "Ursprungsprovets identifierare",
+            "localizedName" : "Ursprungsprovets identifierare",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0003",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "Ursprungsprovets identifierare"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Unik identifierare för ursprungsprovet, där provet delats upp i delprover."
+            },
+            "annotations" : {
+              "comment" : "Till exempel: Ett specifikt objektglas för histologi kan ha ett specifikt paraffinvaxblock som sitt ursprungsprov.\r\n"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0003]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "provkvalitetsproblem",
+            "name" : "Provkvalitetsproblem",
+            "localizedName" : "Provkvalitetsproblem",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0042",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "Provkvalitetsproblem"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Ett specifikt kvalitetsproblem med provmaterialet."
+            },
+            "annotations" : {
+              "comment" : "Kodning av kvalitetsproblem till en terminologi är att föredra i de fall det är möjligt."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0042]/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0052",
+                "label" : "Hemolyserat",
+                "localizedLabels" : {
+                  "sv" : "Hemolyserat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provmaterialet har hemolyserats."
+                }
+              }, {
+                "value" : "at0053",
+                "label" : "Lipemiskt",
+                "localizedLabels" : {
+                  "sv" : "Lipemiskt"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provmaterialet var lipemiskt."
+                }
+              }, {
+                "value" : "at0089",
+                "label" : "Ikteriskt",
+                "localizedLabels" : {
+                  "sv" : "Ikteriskt"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provmaterialet var ikteriskt."
+                }
+              }, {
+                "value" : "at0094",
+                "label" : "Koagulerat",
+                "localizedLabels" : {
+                  "sv" : "Koagulerat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provmaterialet var koagulerat."
+                }
+              }, {
+                "value" : "at0054",
+                "label" : "Felaktigt additiv",
+                "localizedLabels" : {
+                  "sv" : "Felaktigt additiv"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet har tillsatts ett felaktigt additiv såsom ett transportmedium eller konserveringsmedel."
+                }
+              }, {
+                "value" : "at0055",
+                "label" : "Otillräcklig mängd",
+                "localizedLabels" : {
+                  "sv" : "Otillräcklig mängd"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Den tillgängliga mängden provmaterial var otillräcklig för att genomföra undersökningen."
+                }
+              }, {
+                "value" : "at0090",
+                "label" : "Hanteringsfel",
+                "localizedLabels" : {
+                  "sv" : "Hanteringsfel"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Ett fel inträffade vid hantering av provet. Till exempel: Felaktig lagring eller trasig behållare."
+                }
+              }, {
+                "value" : "at0095",
+                "label" : "Felaktig märkning",
+                "localizedLabels" : {
+                  "sv" : "Felaktig märkning"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet var felaktigt märkt."
+                }
+              }, {
+                "value" : "at0091",
+                "label" : "Ålder",
+                "localizedLabels" : {
+                  "sv" : "Ålder"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet var för gammalt för att analysera eller för att analysera korrekt."
+                }
+              }, {
+                "value" : "at0092",
+                "label" : "Tekniskt fel",
+                "localizedLabels" : {
+                  "sv" : "Tekniskt fel"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provmaterialet kunde inte analyseras på grund av tekniska skäl."
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "analyserbarhet",
+            "name" : "Analyserbarhet",
+            "localizedName" : "Analyserbarhet",
+            "rmType" : "DV_CODED_TEXT",
+            "nodeId" : "at0041",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Analyserbarhet"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Information om huruvida provmaterialet var av tillräcklig kvalitet för analys."
+            },
+            "annotations" : {
+              "comment" : "Detta element är avsett för att registrera ett beslut om huruvida provmaterialet var tillräckligt bra för analys och om analysen har genomförts. Kodning av analysbarheten till en terminologi är att föredra där det är möjligt."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1]/items[at0041,'Analyserbarhet']/value",
+            "inputs" : [ {
+              "suffix" : "code",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "at0062",
+                "label" : "Tillfredställande",
+                "localizedLabels" : {
+                  "sv" : "Tillfredställande"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet är av tillfredsställande kvalitet."
+                }
+              }, {
+                "value" : "at0063",
+                "label" : "Otillfredsställande - behandlat",
+                "localizedLabels" : {
+                  "sv" : "Otillfredsställande - behandlat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet är av otillfredsställande kvalitet men har analyserats."
+                }
+              }, {
+                "value" : "at0064",
+                "label" : "Otillfredsställande - ej behandlat",
+                "localizedLabels" : {
+                  "sv" : "Otillfredsställande - ej behandlat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Provet är av otillfredsställande kvalitet och har inte analyserats."
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "mikroskopiska_resultat_-_bröstcancer_uppdateringsförslag",
+          "name" : "Mikroskopiska resultat - Bröstcancer (uppdateringsförslag)",
+          "localizedName" : "Mikroskopiska resultat - Bröstcancer (uppdateringsförslag)",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "sv" : "Mikroskopiska resultat - Bröstcancer (uppdateringsförslag)"
+          },
+          "localizedDescriptions" : {
+            "sv" : "Mikroskopiska anatomiska patologifynd relaterade till bröstcancer."
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]",
+          "children" : [ {
+            "id" : "antal_invasiva_härdar",
+            "name" : "Antal invasiva härdar",
+            "localizedName" : "Antal invasiva härdar",
+            "rmType" : "DV_COUNT",
+            "nodeId" : "at0188",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Antal invasiva härdar"
+            },
+            "localizedDescriptions" : {
+              "sv" : ""
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0188]/value",
+            "inputs" : [ {
+              "type" : "INTEGER"
+            } ]
+          }, {
+            "id" : "histologisk_gradering",
+            "name" : "Histologisk gradering",
+            "localizedName" : "Histologisk gradering",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0015",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Histologisk gradering"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Histologisk gradering av bröstcancer."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]",
+            "children" : [ {
+              "id" : "bloom_och_richardson-graderingssystem",
+              "name" : "Bloom och Richardson-graderingssystem",
+              "localizedName" : "Bloom och Richardson-graderingssystem",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0020",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Bloom och Richardson-graderingssystem"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Bloom och Richardson-graderingssystem (med modifiering av Elston och Ellis) består av tre komponenter som kombineras för att ta fram en beräknad histologi."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]",
+              "children" : [ {
+                "id" : "mitosantal",
+                "name" : "Mitosantal",
+                "localizedName" : "Mitosantal",
+                "rmType" : "DV_COUNT",
+                "nodeId" : "at0014",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Mitosantal"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Mitotisk frekvens beräknas från antalet mitoser per 10 HPF."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0014]/value",
+                "inputs" : [ {
+                  "type" : "INTEGER"
+                } ]
+              }, {
+                "id" : "mitotisk_frekvenspoäng",
+                "name" : "Mitotisk frekvenspoäng",
+                "localizedName" : "Mitotisk frekvenspoäng",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0175",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Mitotisk frekvenspoäng"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Mitotisk frekvenspoäng beräknad från mitosantalet och mikroskopfältets diameter via en uppslagstabell."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0175]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0176",
+                    "label" : "Poäng 1",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 1"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Låg mitotisk frekvens."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0177",
+                    "label" : "Poäng 2",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 2"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Medelhög mitotisk frekvens."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0178",
+                    "label" : "Poäng 3",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 3"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Hög mitotisk frekvens."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "nukleärpoäng",
+                "name" : "Nukleärpoäng",
+                "localizedName" : "Nukleärpoäng",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0016",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Nukleärpoäng"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Nukleärpoäng."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0016]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0050",
+                    "label" : "Poäng 1",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 1"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "*Size equivalent to 1.5–2 red blood cell diameters or normal duct epithelial nuclei; Diffuse chromatin; Inconspicuous nucleoli.(en)"
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0051",
+                    "label" : "Poäng 2",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 2"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Storlek motsvarande 2–2,5 diametrar av röda blodkroppar; Grov kromatin; Sällsynta nukleoler och mitoser."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0052",
+                    "label" : "Poäng 3",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 3"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Storlek> 2,5 röda blodkroppsdiametrar; Pleomorf vesikulära kärnor; En eller flera framstående nukleoli; Ofta förekommer mitotiska figurer."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "tubulär_bildningspoäng",
+                "name" : "Tubulär bildningspoäng",
+                "localizedName" : "Tubulär bildningspoäng",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0017",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Tubulär bildningspoäng"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Tubulär bildningspoäng representerar graden av tubulärbildning i invasiva karcinomceller."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0017]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0044",
+                    "label" : "Tubulär bildningspoäng 1",
+                    "localizedLabels" : {
+                      "sv" : "Tubulär bildningspoäng 1"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Mindre än 75% av invasivt karcinom som bildar tubulära eller glandulära strukturer."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0045",
+                    "label" : "Tubulär bildningspoäng 2",
+                    "localizedLabels" : {
+                      "sv" : "Tubulär bildningspoäng 2"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "10-75% av invasivt karcinom bildar tubulära eller glandulära strukturer."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0046",
+                    "label" : "Tubulär bildningspoäng 3",
+                    "localizedLabels" : {
+                      "sv" : "Tubulär bildningspoäng 3"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Mindre än 10% av invasivt karcinom som bildar tubulära eller glandulära strukturer."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "histologisk_grad",
+                "name" : "Histologisk grad",
+                "localizedName" : "Histologisk grad",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0018",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Histologisk grad"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Bloom och Richardson grad av bröstcancer, härledd från den totala poängen för dess komponenter: mitotisk frekvenspoäng, nukleärpoäng och tubulär bildningspoäng."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0018]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0047",
+                    "label" : "Grad 1",
+                    "localizedLabels" : {
+                      "sv" : "Grad 1"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Total poäng 3-5."
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0048",
+                    "label" : "Grad 2",
+                    "localizedLabels" : {
+                      "sv" : "Grad 2"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Total poäng 6 eller 7."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0049",
+                    "label" : "Grad 3",
+                    "localizedLabels" : {
+                      "sv" : "Grad 3"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Total poäng 8 eller 9."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "problem",
+                "name" : "Problem",
+                "localizedName" : "Problem",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0043",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Problem"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "En textbeskrivning av eventuella bedömningsfrågor som kan förvirra noggrannheten i Bloom och Richardsons histologiska grad."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0015]/items[at0020]/items[at0043]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "lobulär_neoplasi",
+            "name" : "Lobulär neoplasi",
+            "localizedName" : "Lobulär neoplasi",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0060",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Lobulär neoplasi"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Resultat av lobulär neoplasi och varianter."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]",
+            "children" : [ {
+              "id" : "lobulär_neoplasi",
+              "name" : "Lobulär neoplasi",
+              "localizedName" : "Lobulär neoplasi",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0061",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Lobulär neoplasi"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd av lobulär neoplasi."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0061]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0167",
+                  "label" : "Närvarande - klassisk",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - klassisk"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Klassisk lobulär neoplasi är närvarande."
+                  }
+                }, {
+                  "value" : "at0168",
+                  "label" : "Närvarande - pleomorf",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - pleomorf"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Pleomorf lobulär neoplasi är närvarande."
+                  }
+                }, {
+                  "value" : "at0169",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Lobulär neoplasia saknas."
+                  }
+                }, {
+                  "value" : "at0170",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förekomsten av lobulär hyperplasi har inte fastställts."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "atypisk_lobulär_hyperplasi",
+              "name" : "Atypisk lobulär hyperplasi",
+              "localizedName" : "Atypisk lobulär hyperplasi",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0055",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Atypisk lobulär hyperplasi"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd av atypisk lobulär hyperplasi."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0055]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0109",
+                  "label" : "Närvarande - klassisk",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - klassisk"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Klassisk atypisk lobulär neoplasi är närvarande."
+                  }
+                }, {
+                  "value" : "at0110",
+                  "label" : "Närvarande - pleomorf",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - pleomorf"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Pleomorf atypisk lobulär neoplasi är närvarande."
+                  }
+                }, {
+                  "value" : "at0152",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Atypisk lobulär neoplasi saknas."
+                  }
+                }, {
+                  "value" : "at0153",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förekomsten av atypisk lobulär neoplasi har inte fastställts."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "lobulärt_karcinom_in_situ",
+              "name" : "Lobulärt karcinom in situ",
+              "localizedName" : "Lobulärt karcinom in situ",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0058",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Lobulärt karcinom in situ"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd av lobulärt karcinom in situ."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0058]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0171",
+                  "label" : "Närvarande - klassisk",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - klassisk"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Klassiskt lobulärt karcinom in situ är närvarande."
+                  }
+                }, {
+                  "value" : "at0172",
+                  "label" : "Närvarande - pleomorf",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - pleomorf"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Pleomorf lobulärt karcinom in situ är närvarande."
+                  }
+                }, {
+                  "value" : "at0173",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Lobulärt karcinom in situ saknas."
+                  }
+                }, {
+                  "value" : "at0174",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förekomsten av lobulärt karcinom in situ har inte fastställts."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "beskrivning",
+              "name" : "Beskrivning",
+              "localizedName" : "Beskrivning",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0056",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Beskrivning"
+              },
+              "localizedDescriptions" : {
+                "sv" : "En textbeskrivning av lobulär neoplasifynd."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0060]/items[at0056]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            } ]
+          }, {
+            "id" : "pagets_sjukdom_av_bröstvårta",
+            "name" : "Pagets sjukdom av bröstvårta",
+            "localizedName" : "Pagets sjukdom av bröstvårta",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0062",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Pagets sjukdom av bröstvårta"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Fynd relaterade till Pagets sjukdom av bröstvårta."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0062]",
+            "children" : [ {
+              "id" : "pagets_sjukdom_av_bröstvårta",
+              "name" : "Pagets sjukdom av bröstvårta",
+              "localizedName" : "Pagets sjukdom av bröstvårta",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0063",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Pagets sjukdom av bröstvårta"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd relaterade till Pagets sjukdom av bröstvårta."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0062]/items[at0063]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0119",
+                  "label" : "Närvarande",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Pagets sjukdom av bröstvårta är närvarande."
+                  }
+                }, {
+                  "value" : "at0120",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Pagets sjukdom av bröstvårta saknas."
+                  }
+                }, {
+                  "value" : "at0121",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förekomsten av Pagets sjukdom av bröstvårta har inte fastställts."
+                  }
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "mikroförkalkning",
+            "name" : "Mikroförkalkning",
+            "localizedName" : "Mikroförkalkning",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0024",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Mikroförkalkning"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Fynd relaterade till mikroförkalkning."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0024]",
+            "children" : [ {
+              "id" : "mikroförkalkning",
+              "name" : "Mikroförkalkning",
+              "localizedName" : "Mikroförkalkning",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0025",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Mikroförkalkning"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd av mikroförkalkning."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0024]/items[at0025]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0122",
+                  "label" : "Närvarande",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Mikroförkalkning är närvarande."
+                  }
+                }, {
+                  "value" : "at0126",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Mikroförkalkning saknas."
+                  }
+                }, {
+                  "value" : "at0127",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förekomsten av mikroförkalkning har inte fastställts."
+                  }
+                }, {
+                  "value" : "at0123",
+                  "label" : "Närvarande - utan bevis för nekros",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - utan bevis för nekros"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Mikroförkalkning är närvarande utan bevis för nekros."
+                  }
+                }, {
+                  "value" : "at0124",
+                  "label" : "Närvarande - med bevis för nekros",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande - med bevis för nekros"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Mikroförkalkning är närvarande med bevis för nekros."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "associerad_patologi",
+              "name" : "Associerad patologi",
+              "localizedName" : "Associerad patologi",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0026",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Associerad patologi"
+              },
+              "localizedDescriptions" : {
+                "sv" : "En textbeskrivning av patologi associerad med mikroförkalkning."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0024]/items[at0026]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            } ]
+          }, {
+            "id" : "dcis-funktioner",
+            "name" : "DCIS-funktioner",
+            "localizedName" : "DCIS-funktioner",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0064",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "DCIS-funktioner"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Fynd relaterade till Ductal carcinoma-in-situ (DCIS)."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]",
+            "children" : [ {
+              "id" : "förkalkning",
+              "name" : "Förkalkning",
+              "localizedName" : "Förkalkning",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0154",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Förkalkning"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd av förkalkning i DCIS-vävnad."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0154]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0155",
+                  "label" : "Närvarande med nekros",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande med nekros"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förkalkning med nekros är närvarande i DCIS-vävnad."
+                  }
+                }, {
+                  "value" : "at0156",
+                  "label" : "Närvarande utan nekros",
+                  "localizedLabels" : {
+                    "sv" : "Närvarande utan nekros"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förkalkning utan nekros är närvarande i DCIS-vävnad."
+                  }
+                }, {
+                  "value" : "at0157",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förkalkning saknas från DCIS-vävnad."
+                  }
+                }, {
+                  "value" : "at0158",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Förekomsten av förkalkning i DCIS-vävnad har inte fastställts."
+                  }
+                } ]
+              } ]
+            }, {
+              "id" : "histologisk_grad",
+              "name" : "Histologisk grad",
+              "localizedName" : "Histologisk grad",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0125",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Histologisk grad"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Histologisk grad av DCIS."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]",
+              "children" : [ {
+                "id" : "nekros",
+                "name" : "Nekros",
+                "localizedName" : "Nekros",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0075",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Nekros"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Fynd av tumörnekros."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]/items[at0075]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0076",
+                    "label" : "Närvarande (icke-komedon typ)",
+                    "localizedLabels" : {
+                      "sv" : "Närvarande (icke-komedon typ)"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Icke-komedon typ av tumörnekros är närvarande."
+                    }
+                  }, {
+                    "value" : "at0078",
+                    "label" : "Närvarande (komedon typ)",
+                    "localizedLabels" : {
+                      "sv" : "Närvarande (komedon typ)"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Komedon typ av tumörnekros är närvarande."
+                    }
+                  }, {
+                    "value" : "at0077",
+                    "label" : "Frånvarande eller minimal",
+                    "localizedLabels" : {
+                      "sv" : "Frånvarande eller minimal"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Tumörnekros är frånvarande eller minimal."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "nukleärpoäng",
+                "name" : "Nukleärpoäng",
+                "localizedName" : "Nukleärpoäng",
+                "rmType" : "DV_ORDINAL",
+                "nodeId" : "at0070",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Nukleärpoäng"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Nukleärpoäng, med hjälp av modifieringen Elston och Ellis av Bloom och Richardson-systemet för klassificering av invasivt karcinom."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]/items[at0070]/value",
+                "inputs" : [ {
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0071",
+                    "label" : "Poäng 1",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 1"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "*Size equivalent to 1.5–2 red blood cell diameters or normal duct epithelial nuclei; Diffuse chromatin; Inconspicuous nucleoli.(en)"
+                    },
+                    "ordinal" : 1
+                  }, {
+                    "value" : "at0072",
+                    "label" : "Poäng 2",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 2"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Storlek motsvarande 2–2,5 diametrar av röda blodkroppar; Grov kromatin; Sällsynta nukleoler och mitoser."
+                    },
+                    "ordinal" : 2
+                  }, {
+                    "value" : "at0073",
+                    "label" : "Poäng 3",
+                    "localizedLabels" : {
+                      "sv" : "Poäng 3"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Storlek> 2,5 röda blodkroppsdiametrar; Pleomorf vesikulära kärnor; En eller flera framstående nukleoli; Ofta förekommer mitotiska figurer."
+                    },
+                    "ordinal" : 3
+                  } ]
+                } ]
+              }, {
+                "id" : "kommentar",
+                "name" : "Kommentar",
+                "localizedName" : "Kommentar",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0179",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Kommentar"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Kommentera beräkningen av den histologiska graden."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0125]/items[at0179]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            }, {
+              "id" : "dcis_arkitektur",
+              "name" : "DCIS Arkitektur",
+              "localizedName" : "DCIS Arkitektur",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0128",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "DCIS Arkitektur"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd relaterade till arkitekturen av Ductal carcinoma-in-situ."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0128]",
+              "children" : [ {
+                "id" : "dominant_mönster",
+                "name" : "Dominant mönster",
+                "localizedName" : "Dominant mönster",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0130",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Dominant mönster"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Det dominerande arkitektoniska DCIS-mönstret."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0128]/items[at0130]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0132",
+                    "label" : "Solid",
+                    "localizedLabels" : {
+                      "sv" : "Solid"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Solitt mönster av duktalt karcinom in-situ."
+                    }
+                  }, {
+                    "value" : "at0133",
+                    "label" : "Kribriform",
+                    "localizedLabels" : {
+                      "sv" : "Kribriform"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Kribriformt mönster av duktalt karcinom in-situ."
+                    }
+                  }, {
+                    "value" : "at0134",
+                    "label" : "Mikropapillärt",
+                    "localizedLabels" : {
+                      "sv" : "Mikropapillärt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Mikropapillärt mönster av duktalt karcinom in-situ."
+                    }
+                  }, {
+                    "value" : "at0135",
+                    "label" : "Apokrin",
+                    "localizedLabels" : {
+                      "sv" : "Apokrin"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Apokrint mönster av duktalt karcinom in-situ."
+                    }
+                  }, {
+                    "value" : "at0136",
+                    "label" : "Papillär",
+                    "localizedLabels" : {
+                      "sv" : "Papillär"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Papillärt mönster av duktalt karcinom in-situ."
+                    }
+                  }, {
+                    "value" : "at0137",
+                    "label" : "Obestämd",
+                    "localizedLabels" : {
+                      "sv" : "Obestämd"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Det dominanta mönstret av duktalt karcinom in-situ har inte fastställts."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "beskrivning",
+                "name" : "Beskrivning",
+                "localizedName" : "Beskrivning",
+                "rmType" : "DV_TEXT",
+                "nodeId" : "at0131",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Beskrivning"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "En textbeskrivning av det arkitektoniska mönstret."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0064]/items[at0128]/items[at0131]/value",
+                "inputs" : [ {
+                  "type" : "TEXT"
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "hormonreceptoranalyser",
+            "name" : "Hormonreceptoranalyser",
+            "localizedName" : "Hormonreceptoranalyser",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0094",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Hormonreceptoranalyser"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Immunhistokemiska analyser av östrogenreceptor (ER) och progesteronreceptor (PR)."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]",
+            "children" : [ {
+              "id" : "östrogenreceptoranalys_er",
+              "name" : "Östrogenreceptoranalys (ER)",
+              "localizedName" : "Östrogenreceptoranalys (ER)",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0095",
+              "min" : 0,
+              "max" : 2,
+              "localizedNames" : {
+                "sv" : "Östrogenreceptoranalys (ER)"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Östrogenreceptoranalys (ER)."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]",
+              "children" : [ {
+                "id" : "er_resultat",
+                "name" : "ER resultat",
+                "localizedName" : "ER resultat",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0096",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "ER resultat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Östrogenreceptoranalys resultat."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]/items[at0096]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0097",
+                    "label" : "Positivt",
+                    "localizedLabels" : {
+                      "sv" : "Positivt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Positivt resultat av östrogenreceptoranalys."
+                    }
+                  }, {
+                    "value" : "at0098",
+                    "label" : "Negativt",
+                    "localizedLabels" : {
+                      "sv" : "Negativt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Negativt resultat av östrogenreceptoranalys."
+                    }
+                  }, {
+                    "value" : "at0099",
+                    "label" : "Tvetydigt",
+                    "localizedLabels" : {
+                      "sv" : "Tvetydigt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Tvetydigt resultat av östrogenreceptoranalys."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "andel_färgade_kärnor",
+                "name" : "Andel färgade kärnor",
+                "localizedName" : "Andel färgade kärnor",
+                "rmType" : "DV_PROPORTION",
+                "nodeId" : "at0100",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Andel färgade kärnor"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "En uppskattning av andelen färgade kärnor."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]/items[at0100]/value",
+                "proportionTypes" : [ "integer_fraction", "unitary", "percent", "ratio", "fraction" ],
+                "inputs" : [ {
+                  "suffix" : "numerator",
+                  "type" : "DECIMAL"
+                }, {
+                  "suffix" : "denominator",
+                  "type" : "DECIMAL"
+                } ]
+              }, {
+                "id" : "övervägande_färgningsintensitet",
+                "name" : "Övervägande färgningsintensitet",
+                "localizedName" : "Övervägande färgningsintensitet",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0101",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Övervägande färgningsintensitet"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Övervägande intensitet av färgning."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0095]/items[at0101]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0104",
+                    "label" : "Låg",
+                    "localizedLabels" : {
+                      "sv" : "Låg"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Övervägande intensitet av färgning är låg."
+                    }
+                  }, {
+                    "value" : "at0105",
+                    "label" : "Medel",
+                    "localizedLabels" : {
+                      "sv" : "Medel"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Övervägande intensitet av färgning är medelhög."
+                    }
+                  }, {
+                    "value" : "at0106",
+                    "label" : "Hög",
+                    "localizedLabels" : {
+                      "sv" : "Hög"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Övervägande intensitet av färgning är hög."
+                    }
+                  } ]
+                } ]
+              } ]
+            }, {
+              "id" : "progesteronreceptoranalys_pr",
+              "name" : "Progesteronreceptoranalys (PR)",
+              "localizedName" : "Progesteronreceptoranalys (PR)",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0102",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Progesteronreceptoranalys (PR)"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Progesteronreceptoranalys (PR)."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]",
+              "children" : [ {
+                "id" : "pr_resultat",
+                "name" : "PR resultat",
+                "localizedName" : "PR resultat",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0138",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "PR resultat"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Resultat för progesteronreceptoranalys (PR)."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]/items[at0138]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0139",
+                    "label" : "Positivt",
+                    "localizedLabels" : {
+                      "sv" : "Positivt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Positivt resultat för progesteronreceptoranalys."
+                    }
+                  }, {
+                    "value" : "at0140",
+                    "label" : "Negativt",
+                    "localizedLabels" : {
+                      "sv" : "Negativt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Negativt resultat för progesteronreceptoranalys."
+                    }
+                  }, {
+                    "value" : "at0141",
+                    "label" : "Tvetydigt",
+                    "localizedLabels" : {
+                      "sv" : "Tvetydigt"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Tvetydigt resultat för progesteronreceptoranalys."
+                    }
+                  } ]
+                } ]
+              }, {
+                "id" : "andel_färgade_kärnor",
+                "name" : "Andel färgade kärnor",
+                "localizedName" : "Andel färgade kärnor",
+                "rmType" : "DV_PROPORTION",
+                "nodeId" : "at0162",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Andel färgade kärnor"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "En uppskattning av andelen färgade kärnor."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]/items[at0162]/value",
+                "proportionTypes" : [ "integer_fraction", "unitary", "percent", "ratio", "fraction" ],
+                "inputs" : [ {
+                  "suffix" : "numerator",
+                  "type" : "DECIMAL"
+                }, {
+                  "suffix" : "denominator",
+                  "type" : "DECIMAL"
+                } ]
+              }, {
+                "id" : "övervägande_färgningsintensitet",
+                "name" : "Övervägande färgningsintensitet",
+                "localizedName" : "Övervägande färgningsintensitet",
+                "rmType" : "DV_CODED_TEXT",
+                "nodeId" : "at0163",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Övervägande färgningsintensitet"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "Övervägande intensitet av färgning."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0102]/items[at0163]/value",
+                "inputs" : [ {
+                  "suffix" : "code",
+                  "type" : "CODED_TEXT",
+                  "list" : [ {
+                    "value" : "at0164",
+                    "label" : "Låg",
+                    "localizedLabels" : {
+                      "sv" : "Låg"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Övervägande intensitet av färgning är låg."
+                    }
+                  }, {
+                    "value" : "at0165",
+                    "label" : "Medel",
+                    "localizedLabels" : {
+                      "sv" : "Medel"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Övervägande intensitet av färgning är medelhög."
+                    }
+                  }, {
+                    "value" : "at0166",
+                    "label" : "Hög",
+                    "localizedLabels" : {
+                      "sv" : "Hög"
+                    },
+                    "localizedDescriptions" : {
+                      "sv" : "Övervägande intensitet av färgning är hög."
+                    }
+                  } ]
+                } ]
+              } ]
+            }, {
+              "id" : "human_epidermal_growth_factor_receptor_2_assay_her2",
+              "name" : "Human epidermal growth factor receptor 2 assay (HER2)",
+              "localizedName" : "Human epidermal growth factor receptor 2 assay (HER2)",
+              "rmType" : "CLUSTER",
+              "nodeId" : "at0103",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Human epidermal growth factor receptor 2 assay (HER2)"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Human östrogenreceptor 2-analys (HER2)."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]",
+              "children" : [ {
+                "id" : "immunhistokemi",
+                "name" : "Immunhistokemi",
+                "localizedName" : "Immunhistokemi",
+                "rmType" : "CLUSTER",
+                "nodeId" : "at0143",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "Immunhistokemi"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "HER2 immunhistokemiresultat."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0143]",
+                "children" : [ {
+                  "id" : "immunhistokemipoäng",
+                  "name" : "Immunhistokemipoäng",
+                  "localizedName" : "Immunhistokemipoäng",
+                  "rmType" : "DV_COUNT",
+                  "nodeId" : "at0107",
+                  "min" : 0,
+                  "max" : 1,
+                  "localizedNames" : {
+                    "sv" : "Immunhistokemipoäng"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "HER2 immunhistokemipoäng."
+                  },
+                  "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0143]/items[at0107]/value",
+                  "inputs" : [ {
+                    "type" : "INTEGER",
+                    "validation" : {
+                      "range" : {
+                        "minOp" : ">=",
+                        "min" : 0
+                      }
+                    }
+                  } ]
+                }, {
+                  "id" : "immunhistokemiresultat",
+                  "name" : "Immunhistokemiresultat",
+                  "localizedName" : "Immunhistokemiresultat",
+                  "rmType" : "DV_CODED_TEXT",
+                  "nodeId" : "at0142",
+                  "min" : 0,
+                  "max" : 1,
+                  "localizedNames" : {
+                    "sv" : "Immunhistokemiresultat"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "HER2 immunhistokemiresultat."
+                  },
+                  "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0143]/items[at0142]/value",
+                  "inputs" : [ {
+                    "suffix" : "code",
+                    "type" : "CODED_TEXT",
+                    "list" : [ {
+                      "value" : "at0146",
+                      "label" : "Positivt",
+                      "localizedLabels" : {
+                        "sv" : "Positivt"
+                      },
+                      "localizedDescriptions" : {
+                        "sv" : "Positivt resultat för HER2 immunhistokemi."
+                      }
+                    }, {
+                      "value" : "at0147",
+                      "label" : "Negativt",
+                      "localizedLabels" : {
+                        "sv" : "Negativt"
+                      },
+                      "localizedDescriptions" : {
+                        "sv" : "Negativt resultat för HER2 immunhistokemi."
+                      }
+                    }, {
+                      "value" : "at0148",
+                      "label" : "Tvetydigt",
+                      "localizedLabels" : {
+                        "sv" : "Tvetydigt"
+                      },
+                      "localizedDescriptions" : {
+                        "sv" : "Tvetydigt resultat för HER2 immunhistokemi."
+                      }
+                    } ]
+                  } ]
+                } ]
+              }, {
+                "id" : "in_situ-_hybridisering_ish",
+                "name" : "In situ- hybridisering (ISH)",
+                "localizedName" : "In situ- hybridisering (ISH)",
+                "rmType" : "CLUSTER",
+                "nodeId" : "at0144",
+                "min" : 0,
+                "max" : 1,
+                "localizedNames" : {
+                  "sv" : "In situ- hybridisering (ISH)"
+                },
+                "localizedDescriptions" : {
+                  "sv" : "HER2 In situ hybridisering (ISH)."
+                },
+                "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0144]",
+                "children" : [ {
+                  "id" : "ish_resultat",
+                  "name" : "ISH resultat",
+                  "localizedName" : "ISH resultat",
+                  "rmType" : "DV_CODED_TEXT",
+                  "nodeId" : "at0108",
+                  "min" : 0,
+                  "max" : 1,
+                  "localizedNames" : {
+                    "sv" : "ISH resultat"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Resultat för HER2 In situ hybridisering (ISH)."
+                  },
+                  "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0094]/items[at0103]/items[at0144]/items[at0108]/value",
+                  "inputs" : [ {
+                    "suffix" : "code",
+                    "type" : "CODED_TEXT",
+                    "list" : [ {
+                      "value" : "at0149",
+                      "label" : "Positivt",
+                      "localizedLabels" : {
+                        "sv" : "Positivt"
+                      },
+                      "localizedDescriptions" : {
+                        "sv" : "Positivt resultat för HER2 In situ hybridisering (ISH)."
+                      }
+                    }, {
+                      "value" : "at0150",
+                      "label" : "Negativt",
+                      "localizedLabels" : {
+                        "sv" : "Negativt"
+                      },
+                      "localizedDescriptions" : {
+                        "sv" : "Negativt resultat för HER2 In situ hybridisering (ISH)."
+                      }
+                    }, {
+                      "value" : "at0151",
+                      "label" : "Tvetydigt",
+                      "localizedLabels" : {
+                        "sv" : "Tvetydigt"
+                      },
+                      "localizedDescriptions" : {
+                        "sv" : "Tvetydigt resultat för HER2 In situ hybridisering (ISH)."
+                      }
+                    } ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          }, {
+            "id" : "icke-neoplastiska_cellulära_förändringar",
+            "name" : "Icke-neoplastiska cellulära förändringar",
+            "localizedName" : "Icke-neoplastiska cellulära förändringar",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0054",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Icke-neoplastiska cellulära förändringar"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Resultat av icke-neoplastiska cellulära förändringar."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0054]",
+            "children" : [ {
+              "id" : "icke-neoplastisk_cellulär_förändring",
+              "name" : "Icke-neoplastisk cellulär förändring",
+              "localizedName" : "Icke-neoplastisk cellulär förändring",
+              "rmType" : "DV_TEXT",
+              "nodeId" : "at0023",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "sv" : "Icke-neoplastisk cellulär förändring"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Resultat av icke-neoplastisk cellulär förändring."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0054]/items[at0023]/value",
+              "inputs" : [ {
+                "type" : "TEXT"
+              } ]
+            } ]
+          }, {
+            "id" : "icke-neoplastiska_förändringar",
+            "name" : "Icke-neoplastiska förändringar",
+            "localizedName" : "Icke-neoplastiska förändringar",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0180",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "sv" : "Icke-neoplastiska förändringar"
+            },
+            "localizedDescriptions" : {
+              "sv" : "Fynd av icke-neoplastiska förändringar."
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0180]",
+            "children" : [ {
+              "id" : "icke-neoplastiska_förändringar",
+              "name" : "Icke-neoplastiska förändringar",
+              "localizedName" : "Icke-neoplastiska förändringar",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0181",
+              "min" : 0,
+              "max" : -1,
+              "localizedNames" : {
+                "sv" : "Icke-neoplastiska förändringar"
+              },
+              "localizedDescriptions" : {
+                "sv" : "Fynd av icke-neoplastiska förändringar."
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.microscopy_breast_carcinoma_update_suggestion.v0]/items[at0180]/items[at0181]/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "at0182",
+                  "label" : "Cylinderepitelcellförändringar",
+                  "localizedLabels" : {
+                    "sv" : "Cylinderepitelcellförändringar"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Cylinderepitelcellförändringar är närvarande."
+                  }
+                }, {
+                  "value" : "at0183",
+                  "label" : "Intraduktalt papillom",
+                  "localizedLabels" : {
+                    "sv" : "Intraduktalt papillom"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Intraduktalt papillom är närvarande."
+                  }
+                }, {
+                  "value" : "at0184",
+                  "label" : "Radiella ärr",
+                  "localizedLabels" : {
+                    "sv" : "Radiella ärr"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Radiella ärr är närvarande."
+                  }
+                }, {
+                  "value" : "at0185",
+                  "label" : "Atypisk duktal hyperplasi (ADH)",
+                  "localizedLabels" : {
+                    "sv" : "Atypisk duktal hyperplasi (ADH)"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Atypisk duktal hyperplasi är närvarande."
+                  }
+                }, {
+                  "value" : "at0186",
+                  "label" : "Frånvarande",
+                  "localizedLabels" : {
+                    "sv" : "Frånvarande"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Icke-neoplastiska förändringar saknas."
+                  }
+                }, {
+                  "value" : "at0187",
+                  "label" : "Obestämd",
+                  "localizedLabels" : {
+                    "sv" : "Obestämd"
+                  },
+                  "localizedDescriptions" : {
+                    "sv" : "Närvaro av icke-neoplastiska förändringar har inte fastställts."
+                  }
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "patologisk_anatomisk_diagnos_pad",
+          "name" : "Patologisk anatomisk diagnos, PAD",
+          "localizedName" : "Patologisk anatomisk diagnos, PAD",
+          "rmType" : "CLUSTER",
+          "nodeId" : "openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "sv" : "Patologisk anatomisk diagnos, PAD"
+          },
+          "localizedDescriptions" : {
+            "sv" : "*Findings and interpretation of an anatomical pathology examination performed on tissues and body fluids. (en)"
+          },
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0,'Patologisk anatomisk diagnos, PAD']",
+          "children" : [ {
+            "id" : "anatomical_pathology_finding_en",
+            "name" : "*Anatomical pathology finding (en)",
+            "localizedName" : "*Anatomical pathology finding (en)",
+            "rmType" : "CLUSTER",
+            "nodeId" : "at0005",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "sv" : "*Anatomical pathology finding (en)"
+            },
+            "localizedDescriptions" : {
+              "sv" : "*Details of an individual anatomical pathology finding, often related to a specific anatomical location or specimen. (en)"
+            },
+            "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0,'Patologisk anatomisk diagnos, PAD']/items[at0005]",
+            "children" : [ {
+              "id" : "tumörtyper",
+              "name" : "Tumörtyper",
+              "localizedName" : "Tumörtyper",
+              "rmType" : "DV_CODED_TEXT",
+              "nodeId" : "at0023",
+              "min" : 0,
+              "max" : 1,
+              "localizedNames" : {
+                "sv" : "Tumörtyper"
+              },
+              "localizedDescriptions" : {
+                "sv" : "*A text label for the specific finding. (en)"
+              },
+              "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.anatomical_pathology_exam.v0,'Patologisk anatomisk diagnos, PAD']/items[at0005]/items[at0023,'Tumörtyper']/value",
+              "inputs" : [ {
+                "suffix" : "code",
+                "type" : "CODED_TEXT",
+                "list" : [ {
+                  "value" : "82711006",
+                  "label" : "Infiltrating duct carcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                }, {
+                  "value" : "89740008",
+                  "label" : "Lobular carcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                }, {
+                  "value" : "4631006",
+                  "label" : "Tubular adenocarcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                }, {
+                  "value" : "72495009",
+                  "label" : "Mucinous adenocarcinoma (morphologic abnormality)",
+                  "localizedLabels" : {
+                    "sv" : ""
+                  }
+                } ],
+                "terminology" : "http://snomed.info/id/"
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "time",
+          "name" : "Time",
+          "rmType" : "DV_DATE_TIME",
+          "min" : 1,
+          "max" : 1,
+          "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/data[at0001]/events[at0002]/time",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ],
+          "inContext" : true
+        } ]
+      }, {
+        "id" : "language",
+        "name" : "Language",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/language",
+        "inContext" : true
+      }, {
+        "id" : "encoding",
+        "name" : "Encoding",
+        "rmType" : "CODE_PHRASE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/encoding",
+        "inContext" : true
+      }, {
+        "id" : "subject",
+        "name" : "Subject",
+        "rmType" : "PARTY_PROXY",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Mikroskopisk analys av bröstvävnad']/subject",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_scheme",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "id_namespace",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "name",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "category",
+      "rmType" : "DV_CODED_TEXT",
+      "nodeId" : "",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/category",
+      "inputs" : [ {
+        "suffix" : "code",
+        "type" : "CODED_TEXT",
+        "list" : [ {
+          "value" : "433",
+          "label" : "event",
+          "localizedLabels" : {
+            "sv" : ""
+          }
+        } ],
+        "terminology" : "openehr"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}
